@@ -1,5 +1,5 @@
 import {KeyboardType, StyleSheet, Text, TextInput, TextStyle, View} from "react-native";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import Button from "./Button";
 import IconButton from "./IconButton";
 import {COLORS, FONT_FAMILY, GlobalStyles} from "../../constants";
@@ -33,6 +33,7 @@ function Input({
     secureText
 }: IInput) {
     const [isFocused, setIsFocused] = useState(false);
+    const textInputRef = useRef<TextInput | null>();
 
     return (
         <View style={[styles.inputContainer, style]}>
@@ -48,9 +49,10 @@ function Input({
             ]}>
                 <TextInput
                     value={value}
+                    autoCapitalize='none'
                     autoCorrect={false}
                     style={[styles.input, invalid && styles.invalidInput, isFocused && styles.focusedInput]}
-                    placeholder={placeholder}
+                    placeholder={textInputRef.current?.isFocused() || value !== '' ? undefined : placeholder}
                     keyboardType={keyboardType}
                     onChangeText={onUpdateValue}
                     placeholderTextColor={COLORS.labelsTertiary}
@@ -80,7 +82,6 @@ export default Input;
 
 const styles = StyleSheet.create({
     inputContainer: {
-        // marginHorizontal: 4,
         marginVertical: GlobalStyles.spacing.xs,
     },
     inputWrapper: {
