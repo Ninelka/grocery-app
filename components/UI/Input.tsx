@@ -36,7 +36,9 @@ function Input({
 
     return (
         <View style={[styles.inputContainer, style]}>
-            <Text style={[styles.label, invalid && styles.invalidLabel]}>{label}</Text>
+            {label && (
+                <Text style={[styles.label, invalid && styles.invalidLabel]}>{label}</Text>
+            )}
             <View style={[
                 styles.inputWrapper,
                 isFocused && styles.focusedInput,
@@ -78,7 +80,7 @@ export default Input;
 
 const styles = StyleSheet.create({
     inputContainer: {
-        marginHorizontal: 4,
+        // marginHorizontal: 4,
         marginVertical: GlobalStyles.spacing.xs,
     },
     inputWrapper: {
