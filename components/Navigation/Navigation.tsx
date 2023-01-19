@@ -3,7 +3,7 @@ import {AuthContext} from "../../store/context/auth-context";
 import * as SplashScreen from "expo-splash-screen";
 import {NavigationContainer} from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import UnauthorizedStack from "./UnauthorizedStack";
+import UnauthorizedStack from "./UnauthorizedStack";
 import AuthorizedStack from "./AuthorizedStack";
 import {useFonts} from "expo-font";
 
@@ -51,10 +51,8 @@ export function Navigation() {
 
     return (
         <NavigationContainer onReady={onLayoutRootView}>
-            {/* TODO: uncomment after add autorization */}
-            {/*{authCtx.isAuthenticated && <AuthorizedStack />}*/}
-            {/*{!authCtx.isAuthenticated && <UnauthorizedStack />}*/}
-            <AuthorizedStack/>
+            {authCtx.isAuthenticated && <AuthorizedStack />}
+            {!authCtx.isAuthenticated && <UnauthorizedStack />}
         </NavigationContainer>
     );
 }
