@@ -5,6 +5,7 @@ import {useState} from "react";
 import {useTogglePasswordVisibility} from "../../hooks/useTogglePasswordVisibility";
 import {GlobalStyles} from "../../constants";
 import Link from "../UI/Link";
+import {ICredentialsInvalid} from "./AuthContent";
 
 export interface ICredentials {
     email: string,
@@ -15,7 +16,7 @@ export interface ICredentials {
 interface IAuthForm {
     isLogin: boolean,
     onSubmit: (credentials: ICredentials) => void;
-    credentialsInvalid: ICredentials;
+    credentialsInvalid: ICredentialsInvalid;
 }
 
 function AuthForm({ isLogin, onSubmit, credentialsInvalid }: IAuthForm) {
