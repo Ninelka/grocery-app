@@ -11,7 +11,13 @@ function AuthorizedStack() {
       }}
     >
       <Stack.Screen name="BottomTabs" component={BottomTabs} />
-      <Stack.Screen name="Categories" component={CategoriesScreen} />
+      <Stack.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          headerShown: true,
+        }}
+      />
       <Stack.Screen name="PopularDeals" component={PopularDealsScreen} />
     </Stack.Navigator>
   );
