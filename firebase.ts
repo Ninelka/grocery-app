@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from 'firebase/auth';
+import axios from 'axios';
 
 // Initialize Firebase
 const firebase = {
@@ -35,5 +36,15 @@ export async function login(email, password) {
 export async function logout() {
   await signOut(auth);
 }
+
+const dbUrl =
+  'https://grocery-app-46fec-default-rtdb.europe-west1.firebasedatabase.app/';
+
+export async function getCategories() {
+  return await axios.get(dbUrl + 'categories.json').then((response) => {
+    return response.data;
+  });
+}
+
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
