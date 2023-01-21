@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {Alert} from "react-native";
 import {AuthContext} from "../store/context/auth-context";
-import {createUser, login, logout} from "../firebaseConfig";
+import {createUser, login, logout} from "../firebase";
 
 export const useAuth = () => {
     const [isAuthenticating, setIsAuthenticating] = useState(false);
