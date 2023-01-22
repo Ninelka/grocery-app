@@ -1,9 +1,10 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { useCategories } from '../hooks/useCategories';
 import CategoryItem from '../components/UI/CategoryItem';
+import { COLORS } from '../constants';
 
 function CategoriesScreen() {
-  const { categories } = useCategories();
+  const { categories, getCategoryColors } = useCategories();
 
   return (
     <SafeAreaView style={styles.root}>
@@ -12,10 +13,15 @@ function CategoriesScreen() {
         numColumns={3}
         keyExtractor={(item) => item.title}
         data={categories}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
           return (
             <View style={styles.item}>
-              <CategoryItem title={item?.title} icon={item?.icon} />
+              <CategoryItem
+                title={item?.title}
+                icon={item?.icon}
+                iconColor={getCategoryColors(index)?.icon}
+                bgColor={getCategoryColors(index)?.bg}
+              />
             </View>
           );
         }}
@@ -29,6 +35,7 @@ export default CategoriesScreen;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    backgroundColor: COLORS.bgPrimary,
   },
   list: {
     flex: 1,

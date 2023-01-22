@@ -4,6 +4,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
+  View,
 } from 'react-native';
 import SmallViewBox from '../../components/UI/SmallViewBox';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +15,8 @@ import { COLORS, GlobalStyles } from '../../constants';
 
 export function HomeScreen() {
   const navigation = useNavigation<StackNavigation>();
-  const { categories, isCategoriesLoading } = useCategories();
+  const { categories, isCategoriesLoading, getCategoryColors } =
+    useCategories();
 
   const seeAllHandler = (path) => {
     navigation.navigate(path);
@@ -28,18 +30,21 @@ export function HomeScreen() {
           onSeeAll={() => seeAllHandler('Categories')}
         >
           {isCategoriesLoading && <Text>Loading...</Text>}
-          {!categories && <Text>No any categories</Text>}
+          {!categories && !isCategoriesLoading && (
+            <Text>No any categories</Text>
+          )}
           <FlatList
             contentContainerStyle={styles.list}
             data={categories?.slice(0, 4)}
-            renderItem={({ item }) => (
-              <CategoryItem
-                title={item?.title}
-                icon={item?.icon}
-                // TODO: mix colors
-                iconColor={COLORS.primaryGreen}
-                bgColor={COLORS.secondaryGreen}
-              />
+            renderItem={({ item, index }) => (
+              <View>
+                <CategoryItem
+                  title={item?.title}
+                  icon={item?.icon}
+                  iconColor={getCategoryColors(index)?.icon}
+                  bgColor={getCategoryColors(index)?.bg}
+                />
+              </View>
             )}
             horizontal={true}
           />
@@ -52,6 +57,7 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    backgroundColor: COLORS.bgPrimary,
   },
   container: {
     padding: GlobalStyles.spacing.s,
