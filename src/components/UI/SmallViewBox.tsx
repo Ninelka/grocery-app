@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: GlobalStyles.spacing.s,
+    marginTop: GlobalStyles.spacing.m,
+    marginBottom: GlobalStyles.spacing.s,
   },
   title: {
     fontFamily: FONT_FAMILY.bold,
