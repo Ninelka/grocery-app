@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
-import Link from './Link';
+import Link from '../Link/Link';
 import { ReactNode } from 'react';
-import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
+import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 
 interface ISmallViewBox {
   onSeeAll: () => void;
@@ -11,9 +11,11 @@ interface ISmallViewBox {
 
 function SmallViewBox({ title, onSeeAll, children }: ISmallViewBox) {
   return (
-    <View>
+    <View testID="small-view-box-container">
       <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
+        <Text testID="small-view-box-title" style={styles.title}>
+          {title}
+        </Text>
         <Link onPress={onSeeAll}>See All</Link>
       </View>
       <View>{children}</View>

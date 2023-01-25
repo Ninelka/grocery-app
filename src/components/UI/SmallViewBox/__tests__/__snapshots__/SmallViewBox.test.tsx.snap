@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SmallViewBox renders component 1`] = `
+<View
+  testID="small-view-box-container"
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "marginVertical": 16,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#22292e",
+          "fontFamily": "nunito-bold",
+          "fontSize": 24,
+        }
+      }
+      testID="small-view-box-title"
+    >
+      Test title
+    </Text>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          false,
+        ]
+      }
+      testID="link-btn-id"
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#54b175",
+              "fontFamily": "nunito-bold",
+              "fontSize": 17,
+            },
+            undefined,
+          ]
+        }
+        testID="link-btn-text"
+      >
+        See All
+      </Text>
+    </View>
+  </View>
+  <View>
+    <Text>
+      No any data
+    </Text>
+  </View>
+</View>
+`;
