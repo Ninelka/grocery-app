@@ -7,18 +7,24 @@ function AuthorizedStack() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
       }}
     >
-      <Stack.Screen name="BottomTabs" component={BottomTabs} />
       <Stack.Screen
-        name="Categories"
-        component={CategoriesScreen}
+        name="BottomTabs"
+        component={BottomTabs}
         options={{
-          headerShown: true,
+          headerShown: false,
         }}
       />
-      <Stack.Screen name="PopularDeals" component={PopularDealsScreen} />
+      <Stack.Screen name="Categories" component={CategoriesScreen} />
+      <Stack.Screen
+        name="PopularDeals"
+        component={PopularDealsScreen}
+        options={{
+          title: 'Popular Deals',
+        }}
+      />
     </Stack.Navigator>
   );
 }
