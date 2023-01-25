@@ -46,7 +46,7 @@
     "web": "expo start --web",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
-    "test": "jest",
+    "test": "jest --coverage=false",
     "test-debug": "jest -o --watch --coverage=false",
     "test-with-coverage": "jest -o --watch --coverage=true",
     "updateSnapshots": "jest -u --coverage=false"
