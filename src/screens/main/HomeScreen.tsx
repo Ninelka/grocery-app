@@ -1,25 +1,15 @@
-import {
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import SmallViewBox from '../../components/UI/SmallViewBox';
-import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { StackNavigation } from '../../types/stack-navigation';
-import { useCategories } from '../../hooks/useCategories';
-import CategoryItem from '../../components/UI/CategoryItem';
-import Card from '../../components/UI/Card/Card';
 import { COLORS, GlobalStyles } from '../../constants';
-import { useDeals } from '../../hooks/useDeals';
+import { useNavigation } from '@react-navigation/native';
+import {
+  CategoriesHomeBlock,
+  // FeaturedVegetablesHomeScreen,
+  SpecialDealsHomeBlock,
+} from '../../components/HomeBlocks';
 
 export function HomeScreen() {
   const navigation = useNavigation<StackNavigation>();
-  const { categories, isCategoriesLoading, getCategoryColors } =
-    useCategories();
-  const { deals, isDealsLoading } = useDeals();
 
   const seeAllHandler = (path) => {
     navigation.navigate(path);
@@ -28,57 +18,11 @@ export function HomeScreen() {
   return (
     <SafeAreaView style={styles.root}>
       <ScrollView style={styles.container}>
-        <SmallViewBox
-          title="Categories"
-          onSeeAll={() => seeAllHandler('Categories')}
-        >
-          {isCategoriesLoading && <Text>Loading...</Text>}
-          {!categories && !isCategoriesLoading && (
-            <Text>No any categories</Text>
-          )}
-          <FlatList
-            keyExtractor={(item, index) => index.toString()}
-            contentContainerStyle={styles.list}
-            data={categories?.slice(0, 4)}
-            renderItem={({ item, index }) => (
-              <View>
-                <CategoryItem
-                  title={item?.title}
-                  icon={item?.icon}
-                  iconColor={getCategoryColors(index)?.icon}
-                  bgColor={getCategoryColors(index)?.bg}
-                />
-              </View>
-            )}
-            horizontal={true}
-          />
-        </SmallViewBox>
-        <SmallViewBox
-          title="Special Deals for You"
-          onSeeAll={() => seeAllHandler('SpecialDeals')}
-        >
-          {isDealsLoading && <Text>Loading...</Text>}
-          {!deals && !isDealsLoading && <Text>No any deals</Text>}
-          <FlatList
-            keyExtractor={(item, index) => index.toString()}
-            data={deals}
-            renderItem={({ item, index }) => (
-              <View
-                style={[
-                  styles.deals,
-                  index === deals?.length - 1 && { marginRight: 0 },
-                ]}
-              >
-                <Card
-                  title={item?.title}
-                  description={item?.description}
-                  bgImage={item?.imageUrl}
-                />
-              </View>
-            )}
-            horizontal={true}
-          />
-        </SmallViewBox>
+        <CategoriesHomeBlock onSeeAll={() => seeAllHandler('Categories')} />
+        <SpecialDealsHomeBlock onSeeAll={() => seeAllHandler('SpecialDeals')} />
+        {/*<FeaturedVegetablesHomeScreen*/}
+        {/*  onSeeAll={() => seeAllHandler('FeaturedVegetables')}*/}
+        {/*/>*/}
       </ScrollView>
     </SafeAreaView>
   );
@@ -91,12 +35,5 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: GlobalStyles.spacing.s,
-  },
-  list: {
-    flex: 1,
-    justifyContent: 'space-between',
-  },
-  deals: {
-    marginRight: GlobalStyles.spacing.s,
   },
 });
