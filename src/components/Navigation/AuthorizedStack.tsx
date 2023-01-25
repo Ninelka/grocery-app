@@ -1,7 +1,7 @@
 import { Stack } from '../../utils';
 import BottomTabs from './BottomTabs';
 import CategoriesScreen from '../../screens/CategoriesScreen';
-import PopularDealsScreen from '../../screens/PopularDealsScreen';
+import SpecialDealsScreen from '../../screens/SpecialDealsScreen';
 
 function AuthorizedStack() {
   return (
@@ -19,10 +19,10 @@ function AuthorizedStack() {
       />
       <Stack.Screen name="Categories" component={CategoriesScreen} />
       <Stack.Screen
-        name="PopularDeals"
-        component={PopularDealsScreen}
+        name="SpecialDeals"
+        component={SpecialDealsScreen}
         options={{
-          title: 'Popular Deals',
+          title: 'Special Deals for You',
         }}
       />
     </Stack.Navigator>

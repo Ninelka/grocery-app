@@ -3,7 +3,7 @@ import { useDeals } from '../hooks/useDeals';
 import Card from '../components/UI/Card/Card';
 import { COLORS, GlobalStyles } from '../constants';
 
-function PopularDealsScreen() {
+function SpecialDealsScreen() {
   const { deals, isDealsLoading } = useDeals();
 
   return (
@@ -32,7 +32,7 @@ function PopularDealsScreen() {
   );
 }
 
-export default PopularDealsScreen;
+export default SpecialDealsScreen;
 
 const styles = StyleSheet.create({
   root: {

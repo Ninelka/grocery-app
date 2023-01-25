@@ -54,8 +54,8 @@ export function HomeScreen() {
           />
         </SmallViewBox>
         <SmallViewBox
-          title="Popular Deals"
-          onSeeAll={() => seeAllHandler('PopularDeals')}
+          title="Special Deals for You"
+          onSeeAll={() => seeAllHandler('SpecialDeals')}
         >
           {isDealsLoading && <Text>Loading...</Text>}
           {!deals && !isDealsLoading && <Text>No any deals</Text>}
