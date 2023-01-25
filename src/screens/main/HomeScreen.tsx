@@ -6,7 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
-import SmallViewBox from '../../components/UI/SmallViewBox';
+import SmallViewBox from '../../components/UI/SmallViewBox/SmallViewBox';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigation } from '../../types/stack-navigation';
 import { useCategories } from '../../hooks/useCategories';
