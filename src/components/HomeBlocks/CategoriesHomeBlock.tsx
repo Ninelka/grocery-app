@@ -1,4 +1,4 @@
-import SmallViewBox from '../UI/SmallViewBox';
+import SmallViewBox from '../UI/SmallViewBox/SmallViewBox';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useCategories } from '../../hooks/useCategories';
 import CategoryItem from '../UI/CategoryItem';

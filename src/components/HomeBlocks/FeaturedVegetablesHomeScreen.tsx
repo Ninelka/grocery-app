@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import SmallViewBox from '../UI/SmallViewBox';
+import SmallViewBox from '../UI/SmallViewBox/SmallViewBox';
 import { useProducts } from '../../hooks/useProducts';
 import ProductCard from '../UI/ProductCard/ProductCard';
 import { GlobalStyles } from '../../constants';
