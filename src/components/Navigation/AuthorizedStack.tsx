@@ -3,12 +3,20 @@ import BottomTabs from './BottomTabs';
 import CategoriesScreen from '../../screens/CategoriesScreen';
 import SpecialDealsScreen from '../../screens/SpecialDealsScreen';
 import FeaturedVegetablesScreen from '../../screens/FeaturedVegetablesScreen';
+import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 
 function AuthorizedStack() {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: true,
+        headerTintColor: COLORS.primaryGreen,
+        headerTitleStyle: {
+          color: COLORS.black,
+          fontFamily: FONT_FAMILY.semiBold,
+          fontWeight: '600',
+          fontSize: GlobalStyles.fontSize.headline,
+        },
       }}
     >
       <Stack.Screen
