@@ -6,7 +6,7 @@ import { StackNavigation } from '../../types/stack-navigation';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 
 import Button from '../UI/Button';
-import Link from '../UI/Link';
+import Link from '../UI/Link/Link';
 import AuthForm from './AuthForm';
 
 interface IAuthContent {
