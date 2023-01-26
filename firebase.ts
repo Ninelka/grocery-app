@@ -46,5 +46,17 @@ export async function getCategories() {
   });
 }
 
+export async function getDeals() {
+  return await axios.get(dbUrl + 'deals.json').then((response) => {
+    return response.data;
+  });
+}
+
+export async function getProducts() {
+  return await axios.get(dbUrl + 'products.json').then((response) => {
+    return response.data;
+  });
+}
+
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
