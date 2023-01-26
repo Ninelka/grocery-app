@@ -31,9 +31,10 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLORS.bgPrimary,
+    backgroundColor: COLORS.bgSecondary,
   },
   container: {
+    flex: 1,
     padding: GlobalStyles.spacing.s,
   },
 });
