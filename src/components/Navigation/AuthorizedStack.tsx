@@ -2,6 +2,7 @@ import { Stack } from '../../utils';
 import BottomTabs from './BottomTabs';
 import CategoriesScreen from '../../screens/CategoriesScreen';
 import SpecialDealsScreen from '../../screens/SpecialDealsScreen';
+import FeaturedVegetablesScreen from '../../screens/FeaturedVegetablesScreen';
 
 function AuthorizedStack() {
   return (
@@ -23,6 +24,13 @@ function AuthorizedStack() {
         component={SpecialDealsScreen}
         options={{
           title: 'Special Deals for You',
+        }}
+      />
+      <Stack.Screen
+        name="FeaturedVegetables"
+        component={FeaturedVegetablesScreen}
+        options={{
+          title: 'Featured Vegetables',
         }}
       />
     </Stack.Navigator>
