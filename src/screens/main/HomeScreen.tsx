@@ -4,7 +4,7 @@ import { COLORS, GlobalStyles } from '../../constants';
 import { useNavigation } from '@react-navigation/native';
 import {
   CategoriesHomeBlock,
-  // FeaturedVegetablesHomeScreen,
+  FeaturedVegetablesHomeScreen,
   SpecialDealsHomeBlock,
 } from '../../components/HomeBlocks';
 
@@ -20,9 +20,9 @@ export function HomeScreen() {
       <ScrollView style={styles.container}>
         <CategoriesHomeBlock onSeeAll={() => seeAllHandler('Categories')} />
         <SpecialDealsHomeBlock onSeeAll={() => seeAllHandler('SpecialDeals')} />
-        {/*<FeaturedVegetablesHomeScreen*/}
-        {/*  onSeeAll={() => seeAllHandler('FeaturedVegetables')}*/}
-        {/*/>*/}
+        <FeaturedVegetablesHomeScreen
+          onSeeAll={() => seeAllHandler('FeaturedVegetables')}
+        />
       </ScrollView>
     </SafeAreaView>
   );
