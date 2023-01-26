@@ -19,6 +19,7 @@ export const COLORS = {
   secondaryTosca: '#ddf5f4',
   bgPrimary: '#ffffff',
   bgSecondary: '#fbfbfb',
+  bgTertiary: '#e5e5e5',
   groupedBgPrimary: '#ffffff',
   groupedBgSecondary: '#f2f2f7',
   separatorOpaque: '#c6c6c8',
