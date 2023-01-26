@@ -7,8 +7,13 @@ export const useProducts = () => {
     getProducts
   );
 
+  const countAmountWithDiscount = (amount: number, discount: number) => {
+    return amount - (amount * discount) / 100;
+  };
+
   return {
     products,
     isProductsLoading,
+    countAmountWithDiscount,
   };
 };

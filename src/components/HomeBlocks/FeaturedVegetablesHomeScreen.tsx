@@ -11,11 +11,8 @@ interface IFeaturedVegetablesHomeScreen {
 const FeaturedVegetablesHomeScreen = ({
   onSeeAll,
 }: IFeaturedVegetablesHomeScreen) => {
-  const { products, isProductsLoading } = useProducts();
-
-  const countAmountWithDiscount = (amount: number, discount: number) => {
-    return amount - (amount * discount) / 100;
-  };
+  const { products, isProductsLoading, countAmountWithDiscount } =
+    useProducts();
 
   return (
     <SmallViewBox title="Featured Vegetables" onSeeAll={onSeeAll}>
