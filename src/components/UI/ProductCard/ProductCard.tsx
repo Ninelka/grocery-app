@@ -65,7 +65,7 @@ function ProductCard({
         };
       default:
         return {
-          width: 152,
+          width: '100%',
           height: 131,
           marginBottom: 4,
         };
@@ -165,13 +165,11 @@ function ProductCard({
           pressed && styles.pressed,
         ]}
       >
-        {image && (
-          <Image
-            source={image}
-            resizeMode="cover"
-            style={[styles.imageWrapper, imageStyle]}
-          />
-        )}
+        <Image
+          source={image}
+          resizeMode="cover"
+          style={[styles.imageWrapper, imageStyle]}
+        />
         {cardContent}
       </Pressable>
     </View>
