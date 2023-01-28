@@ -8,7 +8,7 @@ import {
   SpecialDealsHomeBlock,
 } from '../../components/HomeBlocks';
 
-export function HomeScreen() {
+export default function HomeScreen() {
   const navigation = useNavigation<StackNavigation>();
 
   const seeAllHandler = (path) => {

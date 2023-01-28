@@ -2,7 +2,7 @@ import { SafeAreaView, Text, View } from 'react-native';
 import Button from '../../components/UI/Button';
 import { useAuth } from '../../hooks/useAuth';
 
-export function ProfileScreen() {
+export default function ProfileScreen() {
   const { logoutHandler } = useAuth();
 
   return (

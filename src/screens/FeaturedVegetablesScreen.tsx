@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useProducts } from '../hooks/useProducts';
-import ProductCard from '../components/UI/ProductCard/ProductCard';
+import { ProductCard } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 
 function FeaturedVegetablesScreen() {

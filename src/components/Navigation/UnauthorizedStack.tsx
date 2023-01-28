@@ -1,6 +1,5 @@
 import { Stack } from '../../utils';
-import LoginScreen from '../../screens/LoginScreen';
-import SignUpScreen from '../../screens/SignUpScreen';
+import { LoginScreen, SignUpScreen } from '../../screens';
 
 function UnauthorizedStack() {
   return (

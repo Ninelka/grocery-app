@@ -1,6 +1,6 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { useCategories } from '../hooks/useCategories';
-import CategoryItem from '../components/UI/CategoryItem';
+import { CategoryItem } from '../components/UI';
 import { COLORS } from '../constants';
 
 function CategoriesScreen() {

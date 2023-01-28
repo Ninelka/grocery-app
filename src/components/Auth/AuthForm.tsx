@@ -1,11 +1,9 @@
 import { StyleSheet, View } from 'react-native';
-import Input from '../UI/Input';
-import Button from '../UI/Button';
 import { useState } from 'react';
 import { useTogglePasswordVisibility } from '../../hooks/useTogglePasswordVisibility';
 import { GlobalStyles } from '../../constants';
-import Link from '../UI/Link/Link';
 import { ICredentialsInvalid } from './AuthContent';
+import { Button, Input, Link } from '../UI';
 
 export interface ICredentials {
   email: string;

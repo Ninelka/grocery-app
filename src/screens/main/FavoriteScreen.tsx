@@ -1,11 +1,10 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Button from '../../components/UI/Button';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
-import IconButton from '../../components/UI/IconButton';
+import { Button, IconButton } from '../../components/UI';
 
 const image = require('../../../assets/images/cart.png');
 
-export function FavoriteScreen() {
+export default function FavoriteScreen() {
   const favoriteList = [];
 
   return (

@@ -1,8 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import Card from '../UI/Card/Card';
 import { useDeals } from '../../hooks/useDeals';
 import { GlobalStyles } from '../../constants';
-import SmallViewBox from '../UI/SmallViewBox/SmallViewBox';
+import { Card, SmallViewBox } from '../UI';
 
 const SpecialDealsHomeBlock = ({ onSeeAll }) => {
   const { deals, isDealsLoading } = useDeals();

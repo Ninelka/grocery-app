@@ -6,7 +6,7 @@ import {
   FavoriteScreen,
   HomeScreen,
   ProfileScreen,
-} from '../../screens/main';
+} from '../../screens';
 
 function MainTabs() {
   return (

@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
-import SmallViewBox from '../UI/SmallViewBox/SmallViewBox';
 import { useProducts } from '../../hooks/useProducts';
-import ProductCard from '../UI/ProductCard/ProductCard';
 import { GlobalStyles } from '../../constants';
+import { SmallViewBox, ProductCard } from '../UI';
 
 interface IFeaturedVegetablesHomeScreen {
   onSeeAll: () => void;
