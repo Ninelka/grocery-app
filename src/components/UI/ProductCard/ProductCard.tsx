@@ -12,7 +12,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 
-interface IProductCard {
+export interface IProductCard {
   title: string;
   unit?: string;
   amount?: number;
