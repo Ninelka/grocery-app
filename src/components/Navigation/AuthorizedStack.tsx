@@ -4,6 +4,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import {
   CategoriesScreen,
   FeaturedVegetablesScreen,
+  ProductDetailsScreen,
   SpecialDealsScreen,
 } from '../../screens';
 
@@ -43,6 +44,7 @@ function AuthorizedStack() {
           title: 'Featured Vegetables',
         }}
       />
+      <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} />
     </Stack.Navigator>
   );
 }

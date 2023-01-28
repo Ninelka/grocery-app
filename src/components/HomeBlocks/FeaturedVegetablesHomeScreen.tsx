@@ -10,8 +10,12 @@ interface IFeaturedVegetablesHomeScreen {
 const FeaturedVegetablesHomeScreen = ({
   onSeeAll,
 }: IFeaturedVegetablesHomeScreen) => {
-  const { products, isProductsLoading, countAmountWithDiscount } =
-    useProducts();
+  const {
+    products,
+    isProductsLoading,
+    countAmountWithDiscount,
+    showProductDetailsHandler,
+  } = useProducts();
 
   return (
     <SmallViewBox title="Featured Vegetables" onSeeAll={onSeeAll}>
@@ -25,6 +29,7 @@ const FeaturedVegetablesHomeScreen = ({
               style={[styles.item, index === 1 && { marginRight: 0 }]}
             >
               <ProductCard
+                onPress={() => showProductDetailsHandler(item)}
                 title={item?.title}
                 unit={item?.unit}
                 amount={item?.amount}

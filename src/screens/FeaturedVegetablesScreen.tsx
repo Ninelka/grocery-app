@@ -4,8 +4,12 @@ import { ProductCard } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 
 function FeaturedVegetablesScreen() {
-  const { products, isProductsLoading, countAmountWithDiscount } =
-    useProducts();
+  const {
+    products,
+    isProductsLoading,
+    countAmountWithDiscount,
+    showProductDetailsHandler,
+  } = useProducts();
 
   // TODO: show only featured products on this screen
   return (
@@ -26,6 +30,7 @@ function FeaturedVegetablesScreen() {
             ]}
           >
             <ProductCard
+              onPress={() => showProductDetailsHandler(item)}
               title={item?.title}
               unit={item?.unit}
               amount={item?.amount}
