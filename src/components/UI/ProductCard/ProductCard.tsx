@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { useMemo } from 'react';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
-import { IconButton, Badge } from '../index';
+import Badge from '../Badge/Badge';
+import IconButton from '../IconButton';
 
 interface IProductCard {
   title: string;
