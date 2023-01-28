@@ -7,3 +7,4 @@ export { default as HomeScreen } from './main/HomeScreen';
 export { default as FavoriteScreen } from './main/FavoriteScreen';
 export { default as CartScreen } from './main/CartScreen';
 export { default as ProfileScreen } from './main/ProfileScreen';
+export { default as ProductDetailsScreen } from './ProductDetailsScreen';
