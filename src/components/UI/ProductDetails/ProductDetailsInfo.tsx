@@ -4,6 +4,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import { useMemo } from 'react';
+import QuantityButtons from '../QuantityButtons';
 
 export default function ProductDetailsInfo({
   title,
@@ -49,7 +50,9 @@ export default function ProductDetailsInfo({
             </Text>
           </View>
         </View>
-        <Text>There will be counter</Text>
+        <View>
+          <QuantityButtons />
+        </View>
       </View>
     </View>
   );
