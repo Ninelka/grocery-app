@@ -10,7 +10,8 @@ interface IIconButton {
   color?: string;
   bgColor?: string;
   type?: 'rounded' | 'ellipse';
-  size?: 'large' | 'medium' | 'small';
+  size?: 'large' | 'medium' | 'small' | 'extra-small';
+  isDisabled?: boolean;
   onPress?: () => void;
 }
 
@@ -26,6 +27,7 @@ function IconButton({
   bgColor = COLORS.primaryGreen,
   type = 'rounded',
   size = 'medium',
+  isDisabled,
   onPress,
 }: IIconButton) {
   const buttonSize = useMemo(() => {
@@ -36,6 +38,8 @@ function IconButton({
         return 64;
       case 'small':
         return 48;
+      case 'extra-small':
+        return 32;
       default:
         return 64;
     }
@@ -49,6 +53,8 @@ function IconButton({
         return 32;
       case 'small':
         return 24;
+      case 'extra-small':
+        return 16;
       default:
         return 32;
     }
@@ -75,6 +81,8 @@ function IconButton({
         return { borderRadius: 32 };
       case 'small':
         return { borderRadius: 24 };
+      case 'extra-small':
+        return { borderRadius: 8 };
       default:
         return { borderRadius: 32 };
     }
@@ -83,6 +91,7 @@ function IconButton({
   return (
     <Pressable
       onPress={onPress}
+      disabled={isDisabled}
       style={({ pressed }) => pressed && styles.pressed}
     >
       <View style={[buttonStyle, type === 'ellipse' && ellipseStyle]}>
