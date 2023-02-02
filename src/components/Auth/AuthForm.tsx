@@ -52,25 +52,28 @@ function AuthForm({ isLogin, onSubmit, credentialsInvalid }: IAuthForm) {
       {!isLogin && (
         <Input
           placeholder="Your Name"
-          onUpdateValue={updateInputValueHandler.bind(this, 'username')}
+          onChangeText={updateInputValueHandler.bind(this, 'username')}
           value={enteredUsername}
+          inputStyle={styles.input}
         />
       )}
       <Input
         placeholder="Email Address"
-        onUpdateValue={updateInputValueHandler.bind(this, 'email')}
+        onChangeText={updateInputValueHandler.bind(this, 'email')}
         value={enteredEmail}
         keyboardType="email-address"
         invalid={!!emailIsInvalid}
+        inputStyle={styles.input}
       />
       <Input
         placeholder="Password"
-        onUpdateValue={updateInputValueHandler.bind(this, 'password')}
+        onChangeText={updateInputValueHandler.bind(this, 'password')}
         secureText={passwordVisibility}
         iconRight={rightIcon}
         iconRightPress={handlePasswordVisibility}
         value={enteredPassword}
         invalid={!!passwordIsInvalid}
+        inputStyle={styles.input}
       />
       {isLogin && (
         // TODO: implement sendPasswordResetEmail and show message about it
@@ -100,5 +103,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginTop: GlobalStyles.spacing.s,
+  },
+  input: {
+    flex: 1,
   },
 });
