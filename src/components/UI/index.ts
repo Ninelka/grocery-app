@@ -8,4 +8,5 @@ export { default as Card } from './Card/Card';
 export { default as Badge } from './Badge/Badge';
 export { default as ProductCard } from './ProductCard/ProductCard';
 export { default as ProductDetailsInfo } from './ProductDetails/ProductDetailsInfo';
+export { default as ProductDetailsTabs } from './ProductDetails/ProductDetailsTabs';
 export { default as QuantityButtons } from './QuantityButtons';
