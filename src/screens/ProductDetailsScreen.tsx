@@ -7,7 +7,12 @@ import {
 } from 'react-native';
 import { useLayoutEffect } from 'react';
 import { IProductCard } from '../components/UI/ProductCard/ProductCard';
-import { Button, IconButton, ProductDetailsInfo } from '../components/UI';
+import {
+  Button,
+  IconButton,
+  ProductDetailsInfo,
+  ProductDetailsTabs,
+} from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 
 export default function ProductDetailsScreen({ route, navigation }) {
@@ -47,6 +52,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
         />
         <View style={styles.content}>
           <ProductDetailsInfo {...productData} />
+          <ProductDetailsTabs />
         </View>
       </ScrollView>
       <View style={styles.actionsRow}>
