@@ -29,6 +29,7 @@ const FeaturedVegetablesHomeScreen = ({
               style={[styles.item, index === 1 && { marginRight: 0 }]}
             >
               <ProductCard
+                id={item?.id}
                 onPress={() => showProductDetailsHandler(item)}
                 title={item?.title}
                 unit={item?.unit}

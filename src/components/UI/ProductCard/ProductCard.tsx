@@ -14,6 +14,7 @@ import IconButton from '../IconButton';
 import QuantityButtons from '../QuantityButtons';
 
 export interface IProductCard {
+  id: string;
   title: string;
   unit?: string;
   amount?: number;
