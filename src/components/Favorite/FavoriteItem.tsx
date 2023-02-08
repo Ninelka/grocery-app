@@ -34,7 +34,6 @@ function FavoriteItem({ item }) {
       <View style={styles.actions}>
         <View style={{ flex: 1 }}>
           <Button
-            size="large"
             type="secondary"
             shape="rounded"
             onPress={() => removeFavoriteHandler(item?.id)}
@@ -43,7 +42,7 @@ function FavoriteItem({ item }) {
           </Button>
         </View>
         <View style={{ flex: 1, marginLeft: GlobalStyles.spacing.s }}>
-          <Button size="large" shape="rounded" onPress={addToCartHandler}>
+          <Button shape="rounded" onPress={addToCartHandler}>
             Add to Cart
           </Button>
         </View>
