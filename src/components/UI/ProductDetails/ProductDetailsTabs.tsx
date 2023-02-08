@@ -5,7 +5,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 
 const segmentsData = ['Detail Items', 'Reviews'];
 
-export default function ProductDetailsTabs() {
+export default function ProductDetailsTabs({ ...props }) {
   const [activeSegmentIndex, setActiveSegmentIndex] = useState(0);
 
   return (
@@ -18,16 +18,12 @@ export default function ProductDetailsTabs() {
           setActiveSegmentIndex(event.nativeEvent.selectedSegmentIndex)
         }
       />
-      {activeSegmentIndex === 0 && (
-        <View>
-          <Text>Details items</Text>
-        </View>
-      )}
-      {activeSegmentIndex === 1 && (
-        <View>
-          <Text>Reviews</Text>
-        </View>
-      )}
+      <View style={styles.content}>
+        {activeSegmentIndex === 0 && (
+          <Text style={styles.productDescription}>{props.description}</Text>
+        )}
+        {activeSegmentIndex === 1 && <Text>Reviews</Text>}
+      </View>
     </View>
   );
 }
@@ -41,5 +37,14 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: GlobalStyles.fontSize.subhead,
     color: COLORS.black,
+  },
+  content: {
+    marginVertical: GlobalStyles.spacing.s,
+  },
+  productDescription: {
+    fontFamily: FONT_FAMILY.semiBold,
+    fontWeight: '600',
+    fontSize: GlobalStyles.fontSize.callout,
+    color: COLORS.grey1,
   },
 });

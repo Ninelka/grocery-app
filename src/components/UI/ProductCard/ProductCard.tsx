@@ -16,6 +16,7 @@ import QuantityButtons from '../QuantityButtons';
 export interface IProductCard {
   id: string;
   title: string;
+  description?: string;
   unit?: string;
   amount?: number;
   amountWithDiscount?: number;

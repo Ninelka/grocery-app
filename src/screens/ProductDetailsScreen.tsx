@@ -18,7 +18,7 @@ import { COLORS, GlobalStyles } from '../constants';
 export default function ProductDetailsScreen({ route, navigation }) {
   const productData = route.params?.productData;
 
-  const { title, image }: IProductCard = productData;
+  const { title, image, description }: IProductCard = productData;
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -52,7 +52,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
         />
         <View style={styles.content}>
           <ProductDetailsInfo {...productData} />
-          <ProductDetailsTabs />
+          <ProductDetailsTabs description={description} />
         </View>
       </ScrollView>
       <View style={styles.actionsRow}>
