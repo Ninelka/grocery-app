@@ -6,13 +6,17 @@ import {
 } from '../store/redux';
 import { useMemo } from 'react';
 
-export const useFavorites = (productId: string) => {
+export const useFavorites = (productId?: string) => {
   const { idList } = useAppSelector((store) => store.favoriteProducts);
   const dispatch = useAppDispatch();
 
   const isFavorite = useMemo(() => {
     return idList?.includes(productId);
   }, [idList]);
+
+  const isListEmpty = useMemo(() => {
+    return idList.length <= 0;
+  }, [idList.length]);
 
   const toggleFavorite = () => {
     if (isFavorite) {
@@ -23,7 +27,9 @@ export const useFavorites = (productId: string) => {
   };
 
   return {
+    idList,
     isFavorite,
+    isListEmpty,
     toggleFavorite,
   };
 };
