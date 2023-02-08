@@ -2,8 +2,12 @@ import { StatusBar } from 'react-native';
 import AuthContextProvider from './src/store/context/auth-context';
 import { Navigation } from './src/components/Navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+import { setupStore } from './src/store/redux';
 
 const queryClient = new QueryClient();
+
+const store = setupStore();
 
 export default function App() {
   return (
@@ -11,7 +15,9 @@ export default function App() {
       <StatusBar />
       <QueryClientProvider client={queryClient}>
         <AuthContextProvider>
-          <Navigation />
+          <Provider store={store}>
+            <Navigation />
+          </Provider>
         </AuthContextProvider>
       </QueryClientProvider>
     </>
