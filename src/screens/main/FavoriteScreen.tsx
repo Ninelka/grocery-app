@@ -1,11 +1,13 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import { Button, IconButton } from '../../components/UI';
+import { useFavorites } from '../../hooks/useFavorites';
+import { FavoriteList } from '../../components/Favorite';
 
 const image = require('../../../assets/images/cart.png');
 
 export default function FavoriteScreen() {
-  const favoriteList = [];
+  const { isListEmpty } = useFavorites();
 
   return (
     <SafeAreaView style={styles.root}>
@@ -20,7 +22,7 @@ export default function FavoriteScreen() {
             bgColor="transparent"
           />
         </View>
-        {!favoriteList.length && (
+        {isListEmpty && (
           <View style={{ flex: 1 }}>
             <View style={styles.content}>
               <Image source={image} style={styles.image} />
@@ -36,6 +38,7 @@ export default function FavoriteScreen() {
             </Button>
           </View>
         )}
+        {!isListEmpty && <FavoriteList />}
       </View>
     </SafeAreaView>
   );
@@ -54,6 +57,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginBottom: GlobalStyles.spacing.s,
   },
   mainTitle: {
     fontFamily: FONT_FAMILY.bold,

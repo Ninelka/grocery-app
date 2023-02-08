@@ -30,6 +30,7 @@ function FeaturedVegetablesScreen() {
             ]}
           >
             <ProductCard
+              id={item?.id}
               onPress={() => showProductDetailsHandler(item)}
               title={item?.title}
               unit={item?.unit}

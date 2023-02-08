@@ -5,8 +5,10 @@ import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import { useMemo } from 'react';
 import QuantityButtons from '../QuantityButtons';
+import { useFavorites } from '../../../hooks/useFavorites';
 
 export default function ProductDetailsInfo({
+  id,
   title,
   unit,
   amount,
@@ -16,6 +18,8 @@ export default function ProductDetailsInfo({
     return amount - (amount * discount) / 100;
   }, [amount, discount]);
 
+  const { isFavorite, toggleFavorite } = useFavorites(id);
+
   return (
     <View>
       {discount > 0 && (
@@ -24,9 +28,10 @@ export default function ProductDetailsInfo({
       <View style={styles.row}>
         <Text style={styles.title}>{title}</Text>
         <IconButton
-          icon="heart-outline"
+          icon={isFavorite ? 'heart' : 'heart-outline'}
           bgColor="transparent"
           color={COLORS.primaryGreen}
+          onPress={toggleFavorite}
         />
       </View>
       {unit && <Text style={styles.unit}>{unit}</Text>}
