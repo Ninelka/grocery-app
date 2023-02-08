@@ -10,3 +10,4 @@ export { default as ProductCard } from './ProductCard/ProductCard';
 export { default as ProductDetailsInfo } from './ProductDetails/ProductDetailsInfo';
 export { default as ProductDetailsTabs } from './ProductDetails/ProductDetailsTabs';
 export { default as QuantityButtons } from './QuantityButtons';
+export { default as EmptyList } from './EmptyList';
