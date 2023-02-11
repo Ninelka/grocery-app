@@ -43,12 +43,7 @@ export default function ProductDetailsInfo({
             </View>
           )}
           <View style={styles.amount}>
-            <Text
-              style={[
-                styles.amountText,
-                { marginLeft: discount > 0 ? GlobalStyles.spacing.xs : 0 },
-              ]}
-            >
+            <Text style={styles.amountText}>
               {discount > 0
                 ? `$${amountWithDiscount.toFixed()}`
                 : `$${amount.toFixed()}`}
