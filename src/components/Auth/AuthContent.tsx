@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { Alert, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 import { StackNavigation } from '../../types/stack-navigation';
@@ -54,55 +63,66 @@ function AuthContent({ isLogin, onAuthenticate }: IAuthContent) {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.root}>
-        <Text style={styles.title}>
-          {isLogin ? 'Log In to Continue!' : 'Sign Up to Continue!'}
-        </Text>
-        {/* TODO: add auth with socials */}
-        <View>
-          <Button
-            style={styles.socialBtn}
-            isDisabled
-            isCentered={false}
-            size="large"
-            shape="rounded"
-          >
-            {`${isLogin ? 'Login' : 'Sign Up'} with Facebook`}
-          </Button>
-          <Button
-            style={styles.socialBtn}
-            isDisabled
-            isCentered={false}
-            size="large"
-            shape="rounded"
-          >
-            {`${isLogin ? 'Login' : 'Sign Up'} with Google`}
-          </Button>
-        </View>
-        <View style={styles.divideContainer}>
-          <View style={styles.line}></View>
-          <Text style={styles.dividerText}>OR</Text>
-          <View style={styles.line}></View>
-        </View>
-        <AuthForm
-          isLogin={isLogin}
-          onSubmit={submitHandler}
-          credentialsInvalid={credentialsInvalid}
-        />
-        <View style={styles.switchContainer}>
-          <Text style={styles.switchText}>
-            {isLogin ? "Don't have an account?" : 'Have an account?'}
-          </Text>
-          <Link
-            onPress={switchAuthModeHandler}
-            textStyle={styles.switchLinkText}
-          >
-            {isLogin ? 'Sign Up' : 'Login'}
-          </Link>
-        </View>
-      </View>
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      behavior="height"
+      style={styles.root}
+      contentContainerStyle={styles.content}
+    >
+      <SafeAreaView style={styles.content}>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={Platform.OS === 'ios' ? styles.content : null}
+        >
+          <View style={styles.content}>
+            <Text style={styles.title}>
+              {isLogin ? 'Log In to Continue!' : 'Sign Up to Continue!'}
+            </Text>
+            {/* TODO: add auth with socials */}
+            <View>
+              <Button
+                style={styles.socialBtn}
+                isDisabled
+                isCentered={false}
+                size="large"
+                shape="rounded"
+              >
+                {`${isLogin ? 'Login' : 'Sign Up'} with Facebook`}
+              </Button>
+              <Button
+                style={styles.socialBtn}
+                isDisabled
+                isCentered={false}
+                size="large"
+                shape="rounded"
+              >
+                {`${isLogin ? 'Login' : 'Sign Up'} with Google`}
+              </Button>
+            </View>
+            <View style={styles.divideContainer}>
+              <View style={styles.line}></View>
+              <Text style={styles.dividerText}>OR</Text>
+              <View style={styles.line}></View>
+            </View>
+            <AuthForm
+              isLogin={isLogin}
+              onSubmit={submitHandler}
+              credentialsInvalid={credentialsInvalid}
+            />
+            <View style={styles.switchContainer}>
+              <Text style={styles.switchText}>
+                {isLogin ? "Don't have an account?" : 'Have an account?'}
+              </Text>
+              <Link
+                onPress={switchAuthModeHandler}
+                textStyle={styles.switchLinkText}
+              >
+                {isLogin ? 'Sign Up' : 'Login'}
+              </Link>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -111,8 +131,11 @@ export default AuthContent;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    padding: 12,
     backgroundColor: COLORS.bgPrimary,
+    padding: 12,
+  },
+  content: {
+    flex: 1,
   },
   title: {
     fontFamily: FONT_FAMILY.bold,
