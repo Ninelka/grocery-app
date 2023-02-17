@@ -1,8 +1,12 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { EmptyList, IconButton } from '../../components/UI';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
+import { useCart } from '../../hooks/useCart';
+import CartList from '../../components/Cart/CartList';
 
 export default function CartScreen() {
+  const { isCartEmpty } = useCart();
+
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.container}>
@@ -16,10 +20,13 @@ export default function CartScreen() {
             bgColor="transparent"
           />
         </View>
-        <EmptyList
-          title="Your Cart is empty!"
-          description={`It seems nothing in here. Explore more\n and add some item to the cart.`}
-        />
+        {isCartEmpty && (
+          <EmptyList
+            title="Your Cart is empty!"
+            description={`It seems nothing in here. Explore more\n and add some item to the cart.`}
+          />
+        )}
+        {!isCartEmpty && <CartList />}
       </View>
     </SafeAreaView>
   );
@@ -28,7 +35,7 @@ export default function CartScreen() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLORS.bgPrimary,
+    backgroundColor: COLORS.bgSecondary,
   },
   container: {
     flex: 1,
