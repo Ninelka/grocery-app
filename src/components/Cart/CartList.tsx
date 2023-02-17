@@ -1,12 +1,48 @@
-import { FlatList, View } from 'react-native';
+import {
+  Animated,
+  FlatList,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { ProductCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
 import { useState } from 'react';
 import { useProducts } from '../../hooks/useProducts';
-import { GlobalStyles } from '../../constants';
+import { COLORS, GlobalStyles } from '../../constants';
+import { Ionicons } from '@expo/vector-icons';
+
+const RemoveAction = (progress, dragX) => {
+  const scale = dragX.interpolate({
+    inputRange: [0, 96],
+    outputRange: [0, 1],
+  });
+
+  return (
+    <Animated.View style={{ transform: [{ translateX: scale }] }}>
+      <Pressable
+        style={({ pressed }) => [
+          styles.removeAction,
+          pressed && styles.pressed,
+        ]}
+        // TODO: add onPress handler
+        // onPress={removeFromCartHandler}
+      >
+        <Ionicons
+          size={GlobalStyles.spacing.m}
+          color={COLORS.white}
+          name="trash-outline"
+        />
+        <Text style={styles.removeActionText}>Delete</Text>
+      </Pressable>
+    </Animated.View>
+  );
+};
 
 export default function CartList() {
-  const { cartItems } = useCart();
+  const { cartItems, removeFromCartHandler } = useCart();
   const { countAmountWithDiscount } = useProducts();
   const [productCount, setProductCount] = useState(1);
 
@@ -21,19 +57,41 @@ export default function CartList() {
               index === cartItems.length - 1 ? 0 : GlobalStyles.spacing.s,
           }}
         >
-          <ProductCard
-            {...item.productData}
-            amountWithDiscount={countAmountWithDiscount(
-              item?.productData?.amount,
-              item?.productData?.discount
-            )}
-            image={{ uri: item?.productData?.image as string }}
-            type="horizontal"
-            withQuantity={true}
-            onQuantity={(counter) => setProductCount(counter)}
-          />
+          <Swipeable
+            renderRightActions={RemoveAction}
+            onSwipeableOpen={() => removeFromCartHandler(item)}
+          >
+            <ProductCard
+              {...item.productData}
+              amountWithDiscount={countAmountWithDiscount(
+                item?.productData?.amount,
+                item?.productData?.discount
+              )}
+              image={{ uri: item?.productData?.image as string }}
+              type="horizontal"
+              onQuantity={() => setProductCount(item?.count)}
+            />
+          </Swipeable>
         </View>
       )}
     />
   );
 }
+
+const styles = StyleSheet.create({
+  removeAction: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: COLORS.red,
+    borderRadius: GlobalStyles.spacing.xs,
+    minWidth: 96,
+    minHeight: '100%',
+  },
+  removeActionText: {
+    color: COLORS.white,
+    marginTop: GlobalStyles.spacing.xs,
+  },
+  pressed: {
+    opacity: 0.7,
+  },
+});
