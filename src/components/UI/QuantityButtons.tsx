@@ -3,10 +3,19 @@ import { StyleSheet, View } from 'react-native';
 import Input from './Input';
 import { useQuantity } from '../../hooks/useQuantity';
 import { COLORS, GlobalStyles } from '../../constants';
+import { useEffect } from 'react';
 
-export default function QuantityButtons() {
+interface IQuantityButtons {
+  onQuantity?: (counter: number) => void;
+}
+
+export default function QuantityButtons({ onQuantity }: IQuantityButtons) {
   const { quantity, decrement, increment, manualChangeQuantity } =
     useQuantity();
+
+  useEffect(() => {
+    onQuantity(quantity);
+  }, [quantity]);
 
   return (
     <View style={styles.root}>
