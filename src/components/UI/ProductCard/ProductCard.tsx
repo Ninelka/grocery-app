@@ -23,12 +23,14 @@ export interface IProductCard {
   image?: ImageSourcePropType;
   discount?: number;
   onPress?: () => void;
+  onAddBtnPress?: () => void;
   type?: 'vertical' | 'horizontal' | 'compact';
-  withQuantity?: boolean;
+  onQuantity?: (counter: number) => void;
 }
 
 function ProductCard({
   onPress,
+  onAddBtnPress,
   type = 'vertical',
   title,
   unit,
@@ -36,7 +38,7 @@ function ProductCard({
   amountWithDiscount,
   image,
   discount,
-  withQuantity,
+  onQuantity,
 }: IProductCard) {
   const cardStyles: ViewStyle = useMemo(() => {
     switch (type) {
@@ -97,7 +99,7 @@ function ProductCard({
           <View
             style={[
               styles.row,
-              withQuantity
+              onQuantity
                 ? { flexDirection: 'column' }
                 : { flexDirection: 'row' },
             ]}
@@ -113,7 +115,7 @@ function ProductCard({
               <Text style={styles.title}>{title}</Text>
               {unit && <Text style={styles.unit}>{unit}</Text>}
             </View>
-            {!withQuantity && (
+            {!onQuantity && (
               <View style={styles.amountBlockCol}>
                 {discount > 0 && (
                   <Text style={styles.discount}>{`$${amount.toFixed()}`}</Text>
@@ -130,7 +132,7 @@ function ProductCard({
                 </Text>
               </View>
             )}
-            {withQuantity && (
+            {onQuantity && (
               <View style={styles.amountWrapper}>
                 <View style={styles.amountBlockRow}>
                   {discount > 0 && (
@@ -151,9 +153,9 @@ function ProductCard({
                       : `$${amount.toFixed()}`}
                   </Text>
                 </View>
-                {withQuantity && (
+                {onQuantity && (
                   <View>
-                    <QuantityButtons />
+                    <QuantityButtons onQuantity={onQuantity} />
                   </View>
                 )}
               </View>
@@ -195,12 +197,17 @@ function ProductCard({
                     : `$${amount.toFixed()}`}
                 </Text>
               </View>
-              <IconButton size="small" color={COLORS.white} icon="add" />
+              <IconButton
+                size="small"
+                color={COLORS.white}
+                icon="add"
+                onPress={onAddBtnPress}
+              />
             </View>
           </View>
         );
     }
-  }, [type, title, discount, unit, amount, withQuantity]);
+  }, [type, title, discount, unit, amount, onQuantity, onAddBtnPress]);
 
   return (
     <View>
