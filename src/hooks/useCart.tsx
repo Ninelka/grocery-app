@@ -1,4 +1,9 @@
-import { addToCart, useAppDispatch, useAppSelector } from '../store/redux';
+import {
+  addToCart,
+  removeFromCart,
+  useAppDispatch,
+  useAppSelector,
+} from '../store/redux';
 import { useMemo } from 'react';
 
 export const useCart = () => {
@@ -13,9 +18,14 @@ export const useCart = () => {
     dispatch(addToCart({ productData: product, count: count }));
   };
 
+  const removeFromCartHandler = (product) => {
+    dispatch(removeFromCart(product));
+  };
+
   return {
     cartItems,
     isCartEmpty,
     addToCartHandler,
+    removeFromCartHandler,
   };
 };
