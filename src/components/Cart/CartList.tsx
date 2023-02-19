@@ -1,11 +1,4 @@
-import {
-  Animated,
-  FlatList,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { ProductCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
@@ -22,21 +15,14 @@ const RemoveAction = (progress, dragX) => {
 
   return (
     <Animated.View style={{ transform: [{ translateX: scale }] }}>
-      <Pressable
-        style={({ pressed }) => [
-          styles.removeAction,
-          pressed && styles.pressed,
-        ]}
-        // TODO: add onPress handler
-        // onPress={removeFromCartHandler}
-      >
+      <View style={styles.removeAction}>
         <Ionicons
           size={GlobalStyles.spacing.m}
           color={COLORS.white}
           name="trash-outline"
         />
         <Text style={styles.removeActionText}>Delete</Text>
-      </Pressable>
+      </View>
     </Animated.View>
   );
 };
@@ -90,8 +76,5 @@ const styles = StyleSheet.create({
   removeActionText: {
     color: COLORS.white,
     marginTop: GlobalStyles.spacing.xs,
-  },
-  pressed: {
-    opacity: 0.7,
   },
 });
