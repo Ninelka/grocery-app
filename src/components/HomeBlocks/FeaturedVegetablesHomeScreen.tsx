@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useProducts } from '../../hooks/useProducts';
 import { GlobalStyles } from '../../constants';
 import { SmallViewBox, ProductCard } from '../UI';
+import { useCart } from '../../hooks/useCart';
 
 interface IFeaturedVegetablesHomeScreen {
   onSeeAll: () => void;
@@ -16,6 +17,7 @@ const FeaturedVegetablesHomeScreen = ({
     countAmountWithDiscount,
     showProductDetailsHandler,
   } = useProducts();
+  const { addToCartHandler } = useCart();
 
   return (
     <SmallViewBox title="Featured Vegetables" onSeeAll={onSeeAll}>
@@ -31,6 +33,7 @@ const FeaturedVegetablesHomeScreen = ({
               <ProductCard
                 id={item?.id}
                 onPress={() => showProductDetailsHandler(item)}
+                onAddBtnPress={() => addToCartHandler(item, 1)}
                 title={item?.title}
                 unit={item?.unit}
                 amount={item?.amount}
