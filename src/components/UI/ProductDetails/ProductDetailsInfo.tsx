@@ -3,9 +3,13 @@ import { IProductCard } from '../ProductCard/ProductCard';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import QuantityButtons from '../QuantityButtons';
 import { useFavorites } from '../../../hooks/useFavorites';
+
+interface IProductDetailsInfo extends IProductCard {
+  onChangeProductQuantity?: (quantity: number) => void;
+}
 
 export default function ProductDetailsInfo({
   id,
@@ -13,12 +17,23 @@ export default function ProductDetailsInfo({
   unit,
   amount,
   discount,
-}: IProductCard) {
+  initialQuantity,
+  onChangeProductQuantity,
+}: IProductDetailsInfo) {
+  const { isFavorite, toggleFavorite } = useFavorites(id);
+  const [initQuantity, setInitQuantity] = useState(initialQuantity);
+
   const amountWithDiscount = useMemo(() => {
     return amount - (amount * discount) / 100;
   }, [amount, discount]);
 
-  const { isFavorite, toggleFavorite } = useFavorites(id);
+  const getPropsFromChild = (props) => {
+    setInitQuantity(props);
+  };
+
+  useEffect(() => {
+    onChangeProductQuantity(initQuantity);
+  }, [initQuantity]);
 
   return (
     <View>
@@ -51,7 +66,10 @@ export default function ProductDetailsInfo({
           </View>
         </View>
         <View>
-          <QuantityButtons />
+          <QuantityButtons
+            onQuantity={getPropsFromChild}
+            initialQuantity={initQuantity}
+          />
         </View>
       </View>
     </View>

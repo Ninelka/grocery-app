@@ -2,7 +2,6 @@ import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { ProductCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
-import { useState } from 'react';
 import { useProducts } from '../../hooks/useProducts';
 import { COLORS, GlobalStyles } from '../../constants';
 import { Ionicons } from '@expo/vector-icons';
@@ -29,12 +28,11 @@ const RemoveAction = (progress, dragX) => {
 
 export default function CartList() {
   const { cartItems, removeFromCartHandler } = useCart();
-  const { countAmountWithDiscount } = useProducts();
-  const [productCount, setProductCount] = useState(1);
+  const { countAmountWithDiscount, currentProduct } = useProducts();
 
   return (
     <FlatList
-      keyExtractor={(item) => item.productData.id}
+      keyExtractor={(item) => item.productId}
       data={cartItems}
       renderItem={({ item, index }) => (
         <View
@@ -48,14 +46,15 @@ export default function CartList() {
             onSwipeableOpen={() => removeFromCartHandler(item)}
           >
             <ProductCard
-              {...item.productData}
+              {...currentProduct(item?.productId)}
               amountWithDiscount={countAmountWithDiscount(
-                item?.productData?.amount,
-                item?.productData?.discount
+                currentProduct(item?.productId).amount,
+                currentProduct(item?.productId).discount
               )}
-              image={{ uri: item?.productData?.image as string }}
+              image={{ uri: currentProduct(item?.productId).image as string }}
               type="horizontal"
-              onQuantity={() => setProductCount(item?.count)}
+              withQuantity={true}
+              initialQuantity={item?.count}
             />
           </Swipeable>
         </View>

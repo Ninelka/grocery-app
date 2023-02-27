@@ -5,7 +5,7 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-import { useLayoutEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { IProductCard } from '../components/UI/ProductCard/ProductCard';
 import {
   Button,
@@ -14,11 +14,23 @@ import {
   ProductDetailsTabs,
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
+import { useCart } from '../hooks/useCart';
 
 export default function ProductDetailsScreen({ route, navigation }) {
+  const { addToCartHandler } = useCart();
   const productData = route.params?.productData;
-
   const { title, image, description }: IProductCard = productData;
+
+  const [productQuantity, setProductQuantity] = useState(1);
+
+  const changeProductQuantity = (props) => {
+    setProductQuantity(props);
+  };
+
+  const buyNowBtnHandler = (counter: number) => {
+    addToCartHandler(productData.id, counter);
+    navigation.navigate('Cart');
+  };
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -30,6 +42,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
             size="small"
             bgColor="transparent"
             color={COLORS.primaryGreen}
+            onPress={() => addToCartHandler(productData.id, productQuantity)}
           />
           <IconButton
             icon="share-social-outline"
@@ -51,7 +64,11 @@ export default function ProductDetailsScreen({ route, navigation }) {
           style={styles.image}
         />
         <View style={styles.content}>
-          <ProductDetailsInfo {...productData} />
+          <ProductDetailsInfo
+            {...productData}
+            initialQuantity={productQuantity}
+            onChangeProductQuantity={changeProductQuantity}
+          />
           <ProductDetailsTabs description={description} />
         </View>
       </ScrollView>
@@ -62,10 +79,15 @@ export default function ProductDetailsScreen({ route, navigation }) {
             size="small"
             color={COLORS.primaryGreen}
             bgColor="transparent"
+            onPress={() => addToCartHandler(productData.id, productQuantity)}
           />
         </View>
         <View style={styles.buyBtn}>
-          <Button size="large" shape="rounded">
+          <Button
+            size="large"
+            shape="rounded"
+            onPress={() => buyNowBtnHandler(productQuantity)}
+          >
             Buy Now
           </Button>
         </View>
@@ -92,6 +114,7 @@ const styles = StyleSheet.create({
     height: '35%',
   },
   content: {
+    flex: 1,
     paddingHorizontal: GlobalStyles.spacing.s,
     paddingTop: GlobalStyles.spacing.s,
   },

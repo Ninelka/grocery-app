@@ -33,7 +33,7 @@ const FeaturedVegetablesHomeScreen = ({
               <ProductCard
                 id={item?.id}
                 onPress={() => showProductDetailsHandler(item)}
-                onAddBtnPress={() => addToCartHandler(item, 1)}
+                onAddBtnPress={() => addToCartHandler(item?.id, 1)}
                 title={item?.title}
                 unit={item?.unit}
                 amount={item?.amount}

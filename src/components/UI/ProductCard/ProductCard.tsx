@@ -7,11 +7,12 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import QuantityButtons from '../QuantityButtons';
+import { useCart } from '../../../hooks/useCart';
 
 export interface IProductCard {
   id: string;
@@ -25,10 +26,12 @@ export interface IProductCard {
   onPress?: () => void;
   onAddBtnPress?: () => void;
   type?: 'vertical' | 'horizontal' | 'compact';
-  onQuantity?: (counter: number) => void;
+  withQuantity?: boolean;
+  initialQuantity?: number;
 }
 
 function ProductCard({
+  id,
   onPress,
   onAddBtnPress,
   type = 'vertical',
@@ -38,8 +41,16 @@ function ProductCard({
   amountWithDiscount,
   image,
   discount,
-  onQuantity,
+  withQuantity,
+  initialQuantity = 1,
 }: IProductCard) {
+  const { addToCartHandler } = useCart();
+  const [initQuantity, setInitQuantity] = useState(initialQuantity);
+
+  useEffect(() => {
+    setInitQuantity(initialQuantity);
+  }, [initialQuantity]);
+
   const cardStyles: ViewStyle = useMemo(() => {
     switch (type) {
       case 'compact':
@@ -99,7 +110,7 @@ function ProductCard({
           <View
             style={[
               styles.row,
-              onQuantity
+              withQuantity
                 ? { flexDirection: 'column' }
                 : { flexDirection: 'row' },
             ]}
@@ -115,7 +126,7 @@ function ProductCard({
               <Text style={styles.title}>{title}</Text>
               {unit && <Text style={styles.unit}>{unit}</Text>}
             </View>
-            {!onQuantity && (
+            {!withQuantity && (
               <View style={styles.amountBlockCol}>
                 {discount > 0 && (
                   <Text style={styles.discount}>{`$${amount.toFixed()}`}</Text>
@@ -132,7 +143,7 @@ function ProductCard({
                 </Text>
               </View>
             )}
-            {onQuantity && (
+            {withQuantity && (
               <View style={styles.amountWrapper}>
                 <View style={styles.amountBlockRow}>
                   {discount > 0 && (
@@ -153,9 +164,14 @@ function ProductCard({
                       : `$${amount.toFixed()}`}
                   </Text>
                 </View>
-                {onQuantity && (
+                {withQuantity && (
                   <View>
-                    <QuantityButtons onQuantity={onQuantity} />
+                    <QuantityButtons
+                      onQuantity={(counter) => {
+                        addToCartHandler(id, counter);
+                      }}
+                      initialQuantity={initQuantity}
+                    />
                   </View>
                 )}
               </View>
@@ -207,7 +223,18 @@ function ProductCard({
           </View>
         );
     }
-  }, [type, title, discount, unit, amount, onQuantity, onAddBtnPress]);
+  }, [
+    type,
+    title,
+    withQuantity,
+    discount,
+    unit,
+    amount,
+    addToCartHandler,
+    id,
+    initQuantity,
+    onAddBtnPress,
+  ]);
 
   return (
     <View>
