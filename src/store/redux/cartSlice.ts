@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IProductCard } from '../../components/UI/ProductCard/ProductCard';
 
 export interface CartItem {
-  productData: IProductCard;
+  productId: string;
   count: number;
 }
 export interface CartState {
@@ -18,14 +17,30 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
-      state.items.push({
-        productData: action.payload.productData,
-        count: action.payload.count,
-      });
+      const currentItem = state.items.find(
+        (item) => item.productId === action.payload.productId
+      );
+
+      if (
+        state.items.length === 0 ||
+        currentItem?.productId !== action.payload.productId
+      ) {
+        state.items.push({
+          productId: action.payload.productId,
+          count: action.payload.count,
+        });
+      }
+
+      if (
+        state.items.length > 0 &&
+        currentItem?.productId === action.payload.productId
+      ) {
+        currentItem.count = action.payload.count;
+      }
     },
     removeFromCart: (state, action: PayloadAction<CartItem>) => {
       state.items = state.items.filter(
-        (item) => item.productData.id !== action.payload.productData.id
+        (item) => item.productId !== action.payload.productId
       );
     },
   },
