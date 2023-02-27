@@ -3,17 +3,14 @@ import { Button, ProductCard } from '../UI';
 import { GlobalStyles } from '../../constants';
 import { removeFavorite, useAppDispatch } from '../../store/redux';
 import { useProducts } from '../../hooks/useProducts';
+import { useCart } from '../../hooks/useCart';
 
 function FavoriteItem({ item }) {
   const { countAmountWithDiscount } = useProducts();
+  const { addToCartHandler } = useCart();
   const dispatch = useAppDispatch();
   const removeFavoriteHandler = (id: string) => {
     dispatch(removeFavorite(id));
-  };
-
-  // TODO: dispatch to the store
-  const addToCartHandler = () => {
-    console.log('item added to the cart!');
   };
 
   return (
@@ -42,7 +39,7 @@ function FavoriteItem({ item }) {
           </Button>
         </View>
         <View style={{ flex: 1, marginLeft: GlobalStyles.spacing.s }}>
-          <Button shape="rounded" onPress={addToCartHandler}>
+          <Button shape="rounded" onPress={() => addToCartHandler(item?.id, 1)}>
             Add to Cart
           </Button>
         </View>
