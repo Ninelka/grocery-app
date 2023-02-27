@@ -2,6 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useProducts } from '../hooks/useProducts';
 import { ProductCard } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
+import { useCart } from '../hooks/useCart';
 
 function FeaturedVegetablesScreen() {
   const {
@@ -10,6 +11,7 @@ function FeaturedVegetablesScreen() {
     countAmountWithDiscount,
     showProductDetailsHandler,
   } = useProducts();
+  const { addToCartHandler } = useCart();
 
   // TODO: show only featured products on this screen
   return (
@@ -41,6 +43,7 @@ function FeaturedVegetablesScreen() {
                 item?.discount
               )}
               image={{ uri: item?.image }}
+              onAddBtnPress={() => addToCartHandler(item?.id, 1)}
             />
           </View>
         )}
