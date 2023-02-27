@@ -20,10 +20,15 @@ export const useProducts = () => {
     });
   };
 
+  const currentProduct = (id: string) => {
+    return products?.find((item) => item.id === id);
+  };
+
   return {
     products,
     isProductsLoading,
     countAmountWithDiscount,
     showProductDetailsHandler,
+    currentProduct,
   };
 };
