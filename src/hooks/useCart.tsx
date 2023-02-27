@@ -14,12 +14,12 @@ export const useCart = () => {
     return cartItems.length <= 0;
   }, [cartItems.length]);
 
-  const addToCartHandler = (product, count) => {
-    dispatch(addToCart({ productData: product, count: count }));
+  const addToCartHandler = (id, count) => {
+    dispatch(addToCart({ productId: id, count: count }));
   };
 
-  const removeFromCartHandler = (product) => {
-    dispatch(removeFromCart(product));
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
   };
 
   return {
