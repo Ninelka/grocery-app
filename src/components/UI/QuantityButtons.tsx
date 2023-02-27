@@ -7,14 +7,20 @@ import { useEffect } from 'react';
 
 interface IQuantityButtons {
   onQuantity?: (counter: number) => void;
+  initialQuantity?: number;
 }
 
-export default function QuantityButtons({ onQuantity }: IQuantityButtons) {
+export default function QuantityButtons({
+  onQuantity,
+  initialQuantity,
+}: IQuantityButtons) {
   const { quantity, decrement, increment, manualChangeQuantity } =
-    useQuantity();
+    useQuantity(initialQuantity);
+
+  const setQuantity = () => onQuantity(quantity);
 
   useEffect(() => {
-    onQuantity(quantity);
+    setQuantity();
   }, [quantity]);
 
   return (

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-export const useQuantity = () => {
-  const [quantity, setQuantity] = useState(1);
+export const useQuantity = (initialValue) => {
+  const [quantity, setQuantity] = useState(initialValue);
 
   const increment = () => {
     setQuantity((prevState) => prevState + 1);
@@ -13,7 +13,7 @@ export const useQuantity = () => {
   };
 
   const manualChangeQuantity = (inputValue: number) => {
-    setQuantity(+inputValue);
+    setQuantity(inputValue);
   };
 
   return {
