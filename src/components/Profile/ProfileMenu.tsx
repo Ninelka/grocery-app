@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import ProfileMenuItem from './ProfileMenuItem';
 import { COLORS, GlobalStyles } from '../../constants';
 import { useAuth } from '../../hooks/useAuth';
@@ -7,7 +7,7 @@ const ProfileMenu = () => {
   const { logoutHandler } = useAuth();
 
   return (
-    <View>
+    <ScrollView>
       <ProfileMenuItem
         title="My Profile"
         iconName="person-circle-outline"
@@ -47,7 +47,7 @@ const ProfileMenu = () => {
         iconBgColor={COLORS.secondaryOrange}
         onPress={logoutHandler}
       />
-    </View>
+    </ScrollView>
   );
 };
 
