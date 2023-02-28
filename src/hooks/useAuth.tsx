@@ -7,12 +7,13 @@ export const useAuth = () => {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const authCtx = useContext(AuthContext);
 
-  async function signupHandler({ email, password }) {
+  async function signupHandler({ email, password, username }) {
     setIsAuthenticating(true);
 
     try {
-      const token = await createUser(email, password);
+      const { user, token } = await createUser(email, password, username);
       authCtx.authenticate(token);
+      authCtx.saveUserInfo({ email: user.email, name: user.displayName });
     } catch (error) {
       Alert.alert(
         'Authentication failed',
@@ -26,8 +27,9 @@ export const useAuth = () => {
     setIsAuthenticating(true);
 
     try {
-      const token = await login(email, password);
+      const { user, token } = await login(email, password);
       authCtx.authenticate(token);
+      authCtx.saveUserInfo({ email: user.email, name: user.displayName });
     } catch (error) {
       Alert.alert(
         'Authentication failed!',
@@ -41,6 +43,7 @@ export const useAuth = () => {
     try {
       await logout();
       authCtx.logout();
+      authCtx.saveUserInfo({ email: '', name: '' });
     } catch (error) {
       Alert.alert(
         'Logout failed!',

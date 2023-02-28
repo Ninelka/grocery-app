@@ -4,6 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from 'firebase/auth';
 import axios from 'axios';
 
@@ -22,15 +23,28 @@ const app = initializeApp(firebase);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export async function createUser(email, password) {
+export async function createUser(email, password, username) {
   const response = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(auth.currentUser, { displayName: username });
 
-  return await response.user.getIdToken();
+  const user = await response.user;
+  const token = await response.user.getIdToken();
+
+  return {
+    user,
+    token,
+  };
 }
 
 export async function login(email, password) {
   const response = await signInWithEmailAndPassword(auth, email, password);
-  return await response.user.getIdToken();
+  const user = await response.user;
+  const token = await response.user.getIdToken();
+
+  return {
+    user,
+    token,
+  };
 }
 
 export async function logout() {

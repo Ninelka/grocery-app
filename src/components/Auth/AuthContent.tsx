@@ -17,7 +17,7 @@ import AuthForm from './AuthForm';
 import { Button, Link } from '../UI';
 
 interface IAuthContent {
-  onAuthenticate: ({ email, password }) => Promise<void>;
+  onAuthenticate: ({ email, password, username }) => Promise<void>;
   isLogin?: boolean;
 }
 
@@ -43,7 +43,7 @@ function AuthContent({ isLogin, onAuthenticate }: IAuthContent) {
     }
   }
   function submitHandler(credentials) {
-    let { email, password } = credentials;
+    let { email, password, username } = credentials;
 
     email = email.trim();
     password = password.trim();
@@ -59,7 +59,7 @@ function AuthContent({ isLogin, onAuthenticate }: IAuthContent) {
       });
       return;
     }
-    onAuthenticate({ email, password });
+    onAuthenticate({ email, password, username });
   }
 
   return (
