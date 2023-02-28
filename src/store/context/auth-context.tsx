@@ -37,10 +37,12 @@ function AuthContextProvider({ children }) {
   function logout() {
     setAuthToken(null);
     AsyncStorage.removeItem('token');
+    AsyncStorage.removeItem('user');
   }
 
   function saveUserInfo(userInfo) {
     setUser(userInfo);
+    AsyncStorage.setItem('user', JSON.stringify(userInfo));
   }
 
   const value: IAuthContext = {

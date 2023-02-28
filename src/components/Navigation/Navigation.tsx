@@ -34,9 +34,14 @@ export function Navigation() {
   useEffect(() => {
     async function fetchToken() {
       const storedToken = await AsyncStorage.getItem('token');
+      const storedUser = await AsyncStorage.getItem('user');
 
       if (storedToken) {
         authCtx.authenticate(storedToken);
+      }
+
+      if (storedUser) {
+        authCtx.saveUserInfo(JSON.parse(storedUser));
       }
 
       setIsTryingLogin(false);

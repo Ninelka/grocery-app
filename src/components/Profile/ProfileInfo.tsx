@@ -12,8 +12,8 @@ const ProfileInfo = () => {
       <ProfileAvatar />
       {userInfo && (
         <>
-          <Text style={styles.name}>{userInfo?.name}</Text>
-          <Text style={styles.email}>{userInfo?.email}</Text>
+          <Text style={styles.name}>{userInfo.name}</Text>
+          <Text style={styles.email}>{userInfo.email}</Text>
         </>
       )}
     </View>
