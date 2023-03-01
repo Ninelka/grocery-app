@@ -57,21 +57,23 @@ export default function ProductDetailsScreen({ route, navigation }) {
 
   return (
     <SafeAreaView style={styles.root}>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style={styles.container}>
         <Image
           source={{ uri: image?.toString() }}
           resizeMode="cover"
           style={styles.image}
         />
-        <View style={styles.content}>
-          <ProductDetailsInfo
-            {...productData}
-            initialQuantity={productQuantity}
-            onChangeProductQuantity={changeProductQuantity}
-          />
-          <ProductDetailsTabs description={description} />
-        </View>
-      </ScrollView>
+        <ScrollView>
+          <View style={styles.content}>
+            <ProductDetailsInfo
+              {...productData}
+              initialQuantity={productQuantity}
+              onChangeProductQuantity={changeProductQuantity}
+            />
+            <ProductDetailsTabs description={description} />
+          </View>
+        </ScrollView>
+      </View>
       <View style={styles.actionsRow}>
         <View style={styles.iconBtn}>
           <IconButton
@@ -106,7 +108,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  scrollContainer: {
+  container: {
     flex: 1,
   },
   image: {
