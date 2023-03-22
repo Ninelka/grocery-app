@@ -5,4 +5,5 @@ export type StackParamList = {
   ProductDetails: {
     productData: undefined;
   };
+  OrderSummary: undefined;
 };

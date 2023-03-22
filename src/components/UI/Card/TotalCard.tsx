@@ -43,7 +43,9 @@ const TotalCard: React.FC<ITotalCard> = ({
       {isSummary ? (
         <Text style={styles.amount}>{`$${summaryAmount}`}</Text>
       ) : (
-        <Button shape="ellipse">Buy Now</Button>
+        <Button shape="ellipse" onPress={onPress}>
+          Buy Now
+        </Button>
       )}
     </Pressable>
   );

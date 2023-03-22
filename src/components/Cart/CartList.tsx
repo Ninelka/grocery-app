@@ -27,7 +27,12 @@ const RemoveAction = (progress, dragX) => {
 };
 
 export default function CartList() {
-  const { cartItems, removeFromCartHandler, totalCartAmount } = useCart();
+  const {
+    cartItems,
+    removeFromCartHandler,
+    totalCartAmount,
+    showOrderSummaryHandler,
+  } = useCart();
   const { countAmountWithDiscount, currentProduct } = useProducts();
 
   return (
@@ -62,7 +67,11 @@ export default function CartList() {
         )}
       />
       <FloatingCard style={styles.total}>
-        <TotalCard counter={cartItems.length} totalAmount={totalCartAmount} />
+        <TotalCard
+          counter={cartItems.length}
+          totalAmount={totalCartAmount}
+          onPress={showOrderSummaryHandler}
+        />
       </FloatingCard>
     </View>
   );
