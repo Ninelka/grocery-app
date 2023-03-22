@@ -6,4 +6,5 @@ export type StackParamList = {
     productData: undefined;
   };
   OrderSummary: undefined;
+  Cart: undefined;
 };

@@ -31,6 +31,10 @@ export const useCart = () => {
     navigation.navigate('OrderSummary');
   };
 
+  const showCartHandler = () => {
+    navigation.navigate('Cart');
+  };
+
   const totalCartAmount = useMemo(() => {
     return cartItems.reduce(
       (total, item) =>
@@ -44,12 +48,21 @@ export const useCart = () => {
     );
   }, [countAmountWithDiscount]);
 
+  const summaryText = useMemo(() => {
+    const cartItemsTitles = cartItems.map(
+      (item) => currentProduct(item.productId).title
+    );
+    return cartItemsTitles.join(', ');
+  }, [cartItems]);
+
   return {
     cartItems,
     isCartEmpty,
     addToCartHandler,
     removeFromCartHandler,
     totalCartAmount,
+    summaryText,
     showOrderSummaryHandler,
+    showCartHandler,
   };
 };

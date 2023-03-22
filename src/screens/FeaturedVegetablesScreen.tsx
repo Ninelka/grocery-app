@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useProducts } from '../hooks/useProducts';
-import { ProductCard } from '../components/UI';
+import { FloatingCard, ProductCard, TotalCard } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
 
@@ -11,7 +11,13 @@ function FeaturedVegetablesScreen() {
     countAmountWithDiscount,
     showProductDetailsHandler,
   } = useProducts();
-  const { addToCartHandler } = useCart();
+  const {
+    addToCartHandler,
+    cartItems,
+    totalCartAmount,
+    summaryText,
+    showCartHandler,
+  } = useCart();
 
   // TODO: show only featured products on this screen
   return (
@@ -48,6 +54,21 @@ function FeaturedVegetablesScreen() {
           </View>
         )}
       />
+      {cartItems.length > 0 && (
+        <FloatingCard
+          position="bottom"
+          withShadow={true}
+          style={styles.summaryCard}
+        >
+          <TotalCard
+            isSummary
+            summaryAmount={totalCartAmount}
+            summaryText={summaryText}
+            counter={cartItems.length}
+            onPress={showCartHandler}
+          />
+        </FloatingCard>
+      )}
     </View>
   );
 }
@@ -63,5 +84,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: GlobalStyles.spacing.xs,
     marginBottom: GlobalStyles.spacing.s,
+  },
+  summaryCard: {
+    backgroundColor: COLORS.primaryGreen,
   },
 });
