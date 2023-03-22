@@ -27,7 +27,7 @@ const RemoveAction = (progress, dragX) => {
 };
 
 export default function CartList() {
-  const { cartItems, removeFromCartHandler } = useCart();
+  const { cartItems, removeFromCartHandler, totalCartAmount } = useCart();
   const { countAmountWithDiscount, currentProduct } = useProducts();
 
   return (
