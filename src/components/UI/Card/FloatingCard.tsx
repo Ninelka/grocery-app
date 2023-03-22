@@ -47,9 +47,9 @@ const styles = StyleSheet.create({
   },
   bottomPosition: {
     position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
+    bottom: GlobalStyles.spacing.l,
+    left: GlobalStyles.spacing.s,
+    right: GlobalStyles.spacing.s,
   },
   shadow: {
     // shadow for android
