@@ -4,6 +4,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import {
   CategoriesScreen,
   FeaturedVegetablesScreen,
+  OrderSummaryScreen,
   ProductDetailsScreen,
   SpecialDealsScreen,
 } from '../../screens';
@@ -45,6 +46,13 @@ function AuthorizedStack() {
         }}
       />
       <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} />
+      <Stack.Screen
+        name="OrderSummary"
+        component={OrderSummaryScreen}
+        options={{
+          title: 'Order Summary',
+        }}
+      />
     </Stack.Navigator>
   );
 }
