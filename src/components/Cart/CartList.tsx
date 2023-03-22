@@ -1,6 +1,6 @@
 import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { ProductCard } from '../UI';
+import { FloatingCard, ProductCard, TotalCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
 import { useProducts } from '../../hooks/useProducts';
 import { COLORS, GlobalStyles } from '../../constants';
@@ -31,39 +31,47 @@ export default function CartList() {
   const { countAmountWithDiscount, currentProduct } = useProducts();
 
   return (
-    <FlatList
-      keyExtractor={(item) => item.productId}
-      data={cartItems}
-      renderItem={({ item, index }) => (
-        <View
-          style={{
-            marginBottom:
-              index === cartItems.length - 1 ? 0 : GlobalStyles.spacing.s,
-          }}
-        >
-          <Swipeable
-            renderRightActions={RemoveAction}
-            onSwipeableOpen={() => removeFromCartHandler(item)}
+    <View style={styles.root}>
+      <FlatList
+        keyExtractor={(item) => item.productId}
+        data={cartItems}
+        renderItem={({ item, index }) => (
+          <View
+            style={{
+              marginBottom:
+                index === cartItems.length - 1 ? 0 : GlobalStyles.spacing.s,
+            }}
           >
-            <ProductCard
-              {...currentProduct(item?.productId)}
-              amountWithDiscount={countAmountWithDiscount(
-                currentProduct(item?.productId).amount,
-                currentProduct(item?.productId).discount
-              )}
-              image={{ uri: currentProduct(item?.productId).image as string }}
-              type="horizontal"
-              withQuantity={true}
-              initialQuantity={item?.count}
-            />
-          </Swipeable>
-        </View>
-      )}
-    />
+            <Swipeable
+              renderRightActions={RemoveAction}
+              onSwipeableOpen={() => removeFromCartHandler(item)}
+            >
+              <ProductCard
+                {...currentProduct(item?.productId)}
+                amountWithDiscount={countAmountWithDiscount(
+                  currentProduct(item?.productId).amount,
+                  currentProduct(item?.productId).discount
+                )}
+                image={{ uri: currentProduct(item?.productId).image as string }}
+                type="horizontal"
+                withQuantity={true}
+                initialQuantity={item?.count}
+              />
+            </Swipeable>
+          </View>
+        )}
+      />
+      <FloatingCard style={styles.total}>
+        <TotalCard counter={cartItems.length} totalAmount={totalCartAmount} />
+      </FloatingCard>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   removeAction: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -75,5 +83,8 @@ const styles = StyleSheet.create({
   removeActionText: {
     color: COLORS.white,
     marginTop: GlobalStyles.spacing.xs,
+  },
+  total: {
+    marginTop: GlobalStyles.spacing.s,
   },
 });
