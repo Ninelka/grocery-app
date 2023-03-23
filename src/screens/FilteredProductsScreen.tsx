@@ -8,7 +8,7 @@ import {
   ProductCard,
   TotalCard,
 } from '../components/UI';
-import { COLORS, FONT_FAMILY, GlobalStyles } from '../constants';
+import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
 
 export default function FilteredProductsScreen({ route, navigation }) {
@@ -34,14 +34,12 @@ export default function FilteredProductsScreen({ route, navigation }) {
     navigation.setOptions({
       title: filter,
       headerRight: () => (
-        <View style={styles.header}>
-          <IconButton
-            size="small"
-            icon="search"
-            color={COLORS.primaryGreen}
-            bgColor="transparent"
-          />
-        </View>
+        <IconButton
+          size="small"
+          icon="search"
+          color={COLORS.primaryGreen}
+          bgColor="transparent"
+        />
       ),
     });
   }, [navigation, filter]);
@@ -115,16 +113,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.bgSecondary,
     padding: GlobalStyles.spacing.s,
-  },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: GlobalStyles.spacing.s,
-  },
-  mainTitle: {
-    fontFamily: FONT_FAMILY.bold,
-    fontSize: GlobalStyles.fontSize.title1,
   },
   item: {
     flex: 1,
