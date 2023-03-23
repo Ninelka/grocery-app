@@ -19,7 +19,10 @@ const FloatingCard: React.FC<IFloatingCard> = ({
   const cardRadius = () =>
     type === 'ellipse' ? GlobalStyles.spacing.xxl : GlobalStyles.spacing.xs;
 
-  const absolutBottom = () => position === 'bottom' && styles.bottomPosition;
+  const absoluteBottom = () => position === 'bottom' && styles.bottomPosition;
+  const absoluteBottomCentered = () =>
+    position === 'bottom-center' && styles.bottomCenterPosition;
+
   const shadowed = useMemo(() => {
     return withShadow && styles.shadow;
   }, [withShadow]);
@@ -29,7 +32,8 @@ const FloatingCard: React.FC<IFloatingCard> = ({
       style={[
         styles.container,
         { borderRadius: cardRadius() },
-        absolutBottom(),
+        absoluteBottom(),
+        absoluteBottomCentered(),
         shadowed,
         style,
       ]}
@@ -50,6 +54,11 @@ const styles = StyleSheet.create({
     bottom: GlobalStyles.spacing.l,
     left: GlobalStyles.spacing.s,
     right: GlobalStyles.spacing.s,
+  },
+  bottomCenterPosition: {
+    position: 'absolute',
+    bottom: GlobalStyles.spacing.l,
+    alignSelf: 'center',
   },
   shadow: {
     // shadow for android
