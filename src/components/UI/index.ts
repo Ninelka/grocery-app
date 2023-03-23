@@ -13,3 +13,4 @@ export { default as ProductDetailsInfo } from './ProductDetails/ProductDetailsIn
 export { default as ProductDetailsTabs } from './ProductDetails/ProductDetailsTabs';
 export { default as QuantityButtons } from './QuantityButtons';
 export { default as EmptyList } from './EmptyList';
+export { default as FilterBtn } from './FilterBtn';
