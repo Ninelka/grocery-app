@@ -36,12 +36,12 @@ const TotalCard: React.FC<ITotalCard> = ({
         ) : (
           <>
             <Text style={styles.text}>{`Total (${counter})`}</Text>
-            <Text style={styles.text}>{`$${totalAmount}`}</Text>
+            <Text style={styles.text}>{`$${totalAmount.toFixed()}`}</Text>
           </>
         )}
       </View>
       {isSummary ? (
-        <Text style={styles.amount}>{`$${summaryAmount}`}</Text>
+        <Text style={styles.amount}>{`$${summaryAmount.toFixed()}`}</Text>
       ) : (
         <Button shape="ellipse" onPress={onPress}>
           Buy Now
