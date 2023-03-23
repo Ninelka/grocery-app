@@ -28,7 +28,9 @@ const TotalCard: React.FC<ITotalCard> = ({
       <View style={{ flex: 1 }}>
         {isSummary ? (
           <>
-            <Text style={styles.title}>{`${counter} Item`}</Text>
+            <Text style={styles.title}>{`${counter} ${
+              counter === 1 ? 'Item' : 'Items'
+            }`}</Text>
             <Text numberOfLines={1} style={styles.summaryText}>
               {summaryText}
             </Text>
