@@ -8,6 +8,7 @@ interface ICategoryItem {
   iconColor?: string;
   bgColor?: string;
   textStyle?: TextStyle;
+  onPress?: () => void;
 }
 
 function CategoryItem({
@@ -16,6 +17,7 @@ function CategoryItem({
   iconColor,
   bgColor,
   textStyle,
+  onPress,
 }: ICategoryItem) {
   return (
     <View style={styles.container}>
@@ -24,6 +26,7 @@ function CategoryItem({
         src={icon}
         color={iconColor}
         bgColor={bgColor}
+        onPress={onPress}
       />
       <Text style={[styles.title, textStyle]}>{title}</Text>
     </View>
