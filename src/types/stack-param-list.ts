@@ -7,4 +7,7 @@ export type StackParamList = {
   };
   OrderSummary: undefined;
   Cart: undefined;
+  FilteredProducts: {
+    filter: undefined;
+  };
 };
