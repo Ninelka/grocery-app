@@ -24,11 +24,16 @@ export const useProducts = () => {
     return products?.find((item) => item.id === id);
   };
 
+  const filteredProducts = (filter: string) => {
+    return products?.filter((item) => item.category === filter);
+  };
+
   return {
     products,
     isProductsLoading,
     countAmountWithDiscount,
     showProductDetailsHandler,
     currentProduct,
+    filteredProducts,
   };
 };
