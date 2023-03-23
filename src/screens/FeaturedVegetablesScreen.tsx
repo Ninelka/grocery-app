@@ -1,6 +1,11 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useProducts } from '../hooks/useProducts';
-import { FloatingCard, ProductCard, TotalCard } from '../components/UI';
+import {
+  FilterBtn,
+  FloatingCard,
+  ProductCard,
+  TotalCard,
+} from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
 
@@ -69,6 +74,16 @@ function FeaturedVegetablesScreen() {
           />
         </FloatingCard>
       )}
+      {cartItems.length === 0 && (
+        <FloatingCard
+          type="ellipse"
+          position="bottom-center"
+          withShadow={true}
+          style={styles.filterBtn}
+        >
+          <FilterBtn />
+        </FloatingCard>
+      )}
     </View>
   );
 }
@@ -87,5 +102,8 @@ const styles = StyleSheet.create({
   },
   summaryCard: {
     backgroundColor: COLORS.primaryGreen,
+  },
+  filterBtn: {
+    width: 172,
   },
 });
