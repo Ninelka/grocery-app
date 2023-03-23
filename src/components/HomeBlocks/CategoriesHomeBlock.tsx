@@ -7,8 +7,12 @@ interface ICategoriesHomeBlock {
 }
 
 const CategoriesHomeBlock = ({ onSeeAll }: ICategoriesHomeBlock) => {
-  const { categories, isCategoriesLoading, getCategoryColors } =
-    useCategories();
+  const {
+    categories,
+    isCategoriesLoading,
+    getCategoryColors,
+    showFilteredProductsHandler,
+  } = useCategories();
 
   return (
     <SmallViewBox title="Categories" onSeeAll={onSeeAll}>
@@ -25,6 +29,7 @@ const CategoriesHomeBlock = ({ onSeeAll }: ICategoriesHomeBlock) => {
               icon={item?.icon}
               iconColor={getCategoryColors(index)?.icon}
               bgColor={getCategoryColors(index)?.bg}
+              onPress={() => showFilteredProductsHandler(item?.title)}
             />
           </View>
         )}

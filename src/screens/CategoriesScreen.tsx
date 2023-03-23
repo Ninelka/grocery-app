@@ -4,7 +4,8 @@ import { CategoryItem } from '../components/UI';
 import { COLORS } from '../constants';
 
 function CategoriesScreen() {
-  const { categories, getCategoryColors } = useCategories();
+  const { categories, getCategoryColors, showFilteredProductsHandler } =
+    useCategories();
 
   return (
     <SafeAreaView style={styles.root}>
@@ -21,6 +22,7 @@ function CategoriesScreen() {
                 icon={item?.icon}
                 iconColor={getCategoryColors(index)?.icon}
                 bgColor={getCategoryColors(index)?.bg}
+                onPress={() => showFilteredProductsHandler(item?.title)}
               />
             </View>
           );
