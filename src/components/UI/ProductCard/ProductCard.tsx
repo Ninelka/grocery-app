@@ -13,6 +13,7 @@ import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import QuantityButtons from '../QuantityButtons';
 import { useCart } from '../../../hooks/useCart';
+import { IReview } from '../Card/ReviewCard';
 
 export interface IProductCard {
   id: string;
@@ -28,6 +29,7 @@ export interface IProductCard {
   type?: 'vertical' | 'horizontal' | 'compact';
   withQuantity?: boolean;
   initialQuantity?: number;
+  reviews?: IReview[];
 }
 
 function ProductCard({

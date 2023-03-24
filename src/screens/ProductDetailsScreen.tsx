@@ -19,7 +19,7 @@ import { useCart } from '../hooks/useCart';
 export default function ProductDetailsScreen({ route, navigation }) {
   const { addToCartHandler } = useCart();
   const productData = route.params?.productData;
-  const { title, image, description }: IProductCard = productData;
+  const { title, image, description, reviews }: IProductCard = productData;
 
   const [productQuantity, setProductQuantity] = useState(1);
 
@@ -70,7 +70,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
               initialQuantity={productQuantity}
               onChangeProductQuantity={changeProductQuantity}
             />
-            <ProductDetailsTabs description={description} />
+            <ProductDetailsTabs description={description} reviews={reviews} />
           </View>
         </ScrollView>
       </View>
@@ -101,7 +101,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: COLORS.bgPrimary,
+    backgroundColor: COLORS.bgSecondary,
   },
   headerRightRow: {
     flexDirection: 'row',
