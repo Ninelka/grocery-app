@@ -10,3 +10,4 @@ export { default as ProfileScreen } from './main/ProfileScreen';
 export { default as ProductDetailsScreen } from './ProductDetailsScreen';
 export { default as OrderSummaryScreen } from './OrderSummaryScreen';
 export { default as FilteredProductsScreen } from './FilteredProductsScreen';
+export { default as AllReviewScreen } from './AllReviewScreen';

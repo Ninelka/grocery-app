@@ -2,6 +2,7 @@ import { Stack } from '../../utils';
 import BottomTabs from './BottomTabs';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import {
+  AllReviewScreen,
   CategoriesScreen,
   FeaturedVegetablesScreen,
   FilteredProductsScreen,
@@ -57,6 +58,13 @@ function AuthorizedStack() {
       <Stack.Screen
         name="FilteredProducts"
         component={FilteredProductsScreen}
+      />
+      <Stack.Screen
+        name="AllReviews"
+        component={AllReviewScreen}
+        options={{
+          title: 'All Reviews',
+        }}
       />
     </Stack.Navigator>
   );

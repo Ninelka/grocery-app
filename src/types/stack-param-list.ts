@@ -10,4 +10,7 @@ export type StackParamList = {
   FilteredProducts: {
     filter: undefined;
   };
+  AllReviews: {
+    reviews: undefined;
+  };
 };

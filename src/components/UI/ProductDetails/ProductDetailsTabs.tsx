@@ -4,12 +4,21 @@ import { useState } from 'react';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import ReviewCard from '../Card/ReviewCard';
 import Button from '../Button';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigation } from '../../../types/stack-navigation';
 
 const segmentsData = ['Detail Items', 'Reviews'];
 
 export default function ProductDetailsTabs({ ...props }) {
   const [activeSegmentIndex, setActiveSegmentIndex] = useState(0);
+  const navigation = useNavigation<StackNavigation>();
   const { reviews } = props;
+
+  const openAllReviewsHandler = () => {
+    navigation.navigate('AllReviews', {
+      reviews,
+    });
+  };
 
   return (
     <View style={styles.root}>
@@ -29,17 +38,22 @@ export default function ProductDetailsTabs({ ...props }) {
           <>
             {reviews && (
               <>
-                {reviews?.slice(0, 2).map((item, index) => (
+                {reviews?.slice(0, 2).map((item) => (
                   <ReviewCard
                     style={styles.reviewCard}
-                    key={index.toString()}
+                    key={item.id}
                     username={item.username}
                     stars={item.stars}
                     date={item.date}
                     text={item.text}
                   />
                 ))}
-                <Button size="large" type="secondary" shape="rounded">
+                <Button
+                  size="large"
+                  type="secondary"
+                  shape="rounded"
+                  onPress={openAllReviewsHandler}
+                >
                   See All Reviews
                 </Button>
               </>
