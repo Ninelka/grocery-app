@@ -34,32 +34,30 @@ export default function ProductDetailsTabs({ ...props }) {
         {activeSegmentIndex === 0 && (
           <Text style={styles.productDescription}>{props.description}</Text>
         )}
-        {activeSegmentIndex === 1 && (
+        {activeSegmentIndex === 1 && reviews && (
           <>
-            {reviews && (
-              <>
-                {reviews?.slice(0, 2).map((item) => (
-                  <ReviewCard
-                    style={styles.reviewCard}
-                    key={item.id}
-                    username={item.username}
-                    stars={item.stars}
-                    date={item.date}
-                    text={item.text}
-                  />
-                ))}
-                <Button
-                  size="large"
-                  type="secondary"
-                  shape="rounded"
-                  onPress={openAllReviewsHandler}
-                >
-                  See All Reviews
-                </Button>
-              </>
-            )}
-            {(!reviews || reviews?.length === 0) && <Text>No any reviews</Text>}
+            {reviews.slice(0, 2).map((item) => (
+              <ReviewCard
+                style={styles.reviewCard}
+                key={item.id}
+                username={item.username}
+                stars={item.stars}
+                date={item.date}
+                text={item.text}
+              />
+            ))}
+            <Button
+              size="large"
+              type="secondary"
+              shape="rounded"
+              onPress={openAllReviewsHandler}
+            >
+              See All Reviews
+            </Button>
           </>
+        )}
+        {activeSegmentIndex === 1 && (!reviews || reviews?.length === 0) && (
+          <Text>No any reviews</Text>
         )}
       </View>
     </View>

@@ -6,7 +6,7 @@ import React from 'react';
 export interface IReview {
   username: string;
   stars: number;
-  date: Date;
+  date: string;
   text: string;
   style?: ViewStyle;
 }
@@ -18,12 +18,6 @@ const ReviewCard: React.FC<IReview> = ({
   text,
   style,
 }) => {
-  const reviewDate = new Date(date).toLocaleDateString('en-US', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  });
-
   return (
     <View style={[styles.item, style]}>
       <View style={styles.row}>
@@ -41,7 +35,7 @@ const ReviewCard: React.FC<IReview> = ({
                   color="lightblue"
                 />
               ))}
-            <Text style={styles.date}>{reviewDate}</Text>
+            <Text style={styles.date}>{date}</Text>
           </View>
         </View>
       </View>
