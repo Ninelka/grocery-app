@@ -11,3 +11,4 @@ export { default as ProductDetailsScreen } from './ProductDetailsScreen';
 export { default as OrderSummaryScreen } from './OrderSummaryScreen';
 export { default as FilteredProductsScreen } from './FilteredProductsScreen';
 export { default as AllReviewScreen } from './AllReviewScreen';
+export { default as IntroSliderScreen } from './IntroSliderScreen';
