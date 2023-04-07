@@ -5,6 +5,7 @@ import { useCart } from '../../hooks/useCart';
 import { useProducts } from '../../hooks/useProducts';
 import { COLORS, GlobalStyles } from '../../constants';
 import { Ionicons } from '@expo/vector-icons';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const RemoveAction = (progress, dragX) => {
   const scale = dragX.interpolate({
@@ -47,22 +48,26 @@ export default function CartList() {
                 index === cartItems.length - 1 ? 0 : GlobalStyles.spacing.s,
             }}
           >
-            <Swipeable
-              renderRightActions={RemoveAction}
-              onSwipeableOpen={() => removeFromCartHandler(item)}
-            >
-              <ProductCard
-                {...currentProduct(item?.productId)}
-                amountWithDiscount={countAmountWithDiscount(
-                  currentProduct(item?.productId).amount,
-                  currentProduct(item?.productId).discount
-                )}
-                image={{ uri: currentProduct(item?.productId).image as string }}
-                type="horizontal"
-                withQuantity={true}
-                initialQuantity={item?.count}
-              />
-            </Swipeable>
+            <GestureHandlerRootView>
+              <Swipeable
+                renderRightActions={RemoveAction}
+                onSwipeableOpen={() => removeFromCartHandler(item)}
+              >
+                <ProductCard
+                  {...currentProduct(item?.productId)}
+                  amountWithDiscount={countAmountWithDiscount(
+                    currentProduct(item?.productId).amount,
+                    currentProduct(item?.productId).discount
+                  )}
+                  image={{
+                    uri: currentProduct(item?.productId).image as string,
+                  }}
+                  type="horizontal"
+                  withQuantity={true}
+                  initialQuantity={item?.count}
+                />
+              </Swipeable>
+            </GestureHandlerRootView>
           </View>
         )}
       />
