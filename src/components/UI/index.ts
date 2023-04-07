@@ -15,3 +15,4 @@ export { default as ProductDetailsTabs } from './ProductDetails/ProductDetailsTa
 export { default as QuantityButtons } from './QuantityButtons';
 export { default as EmptyList } from './EmptyList';
 export { default as FilterBtn } from './FilterBtn';
+export { default as IntroSlide } from './IntroSlide';
