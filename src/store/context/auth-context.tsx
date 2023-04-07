@@ -53,7 +53,7 @@ function AuthContextProvider({ children }) {
 
   function saveOnboardingMark(onboardingMark) {
     setIsOnboardingShow(onboardingMark);
-    AsyncStorage.setItem('isOnboardingShow', onboardingMark);
+    AsyncStorage.setItem('isOnboardingShow', String(onboardingMark));
   }
 
   const value: IAuthContext = {
