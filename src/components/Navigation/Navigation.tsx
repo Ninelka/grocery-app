@@ -35,6 +35,9 @@ export function Navigation() {
     async function fetchToken() {
       const storedToken = await AsyncStorage.getItem('token');
       const storedUser = await AsyncStorage.getItem('user');
+      const storedOnboardingMark = await AsyncStorage.getItem(
+        'isOnboardingShow'
+      );
 
       if (storedToken) {
         authCtx.authenticate(storedToken);
@@ -42,6 +45,10 @@ export function Navigation() {
 
       if (storedUser) {
         authCtx.saveUserInfo(JSON.parse(storedUser));
+      }
+
+      if (storedOnboardingMark) {
+        authCtx.saveOnboardingMark(storedOnboardingMark);
       }
 
       setIsTryingLogin(false);

@@ -12,23 +12,28 @@ interface IAuthContext {
   token: string;
   isAuthenticated: boolean;
   userInfo: IUser;
+  isOnboardingDone: boolean;
   authenticate: (token: string) => void;
   logout: () => void;
   saveUserInfo: ({ email, displayName }: User) => void;
+  saveOnboardingMark: (onboardingMark: boolean) => void;
 }
 
 export const AuthContext = createContext({
   token: '',
   isAuthenticated: false,
   userInfo: { email: '', name: '' },
+  isOnboardingDone: false,
   authenticate: (token) => {},
   logout: () => {},
   saveUserInfo: (user) => {},
+  saveOnboardingMark: (onboardingMark) => {},
 });
 
 function AuthContextProvider({ children }) {
   const [authToken, setAuthToken] = useState();
   const [user, setUser] = useState();
+  const [isOnboardingShow, setIsOnboardingShow] = useState();
   function authenticate(token) {
     setAuthToken(token);
     AsyncStorage.setItem('token', token);
@@ -38,6 +43,7 @@ function AuthContextProvider({ children }) {
     setAuthToken(null);
     AsyncStorage.removeItem('token');
     AsyncStorage.removeItem('user');
+    AsyncStorage.removeItem('isOnboardingShow');
   }
 
   function saveUserInfo(userInfo) {
@@ -45,13 +51,20 @@ function AuthContextProvider({ children }) {
     AsyncStorage.setItem('user', JSON.stringify(userInfo));
   }
 
+  function saveOnboardingMark(onboardingMark) {
+    setIsOnboardingShow(onboardingMark);
+    AsyncStorage.setItem('isOnboardingShow', onboardingMark);
+  }
+
   const value: IAuthContext = {
     token: authToken,
     isAuthenticated: !!authToken,
     userInfo: user,
+    isOnboardingDone: !!isOnboardingShow,
     authenticate: authenticate,
     logout: logout,
     saveUserInfo: saveUserInfo,
+    saveOnboardingMark: saveOnboardingMark,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
