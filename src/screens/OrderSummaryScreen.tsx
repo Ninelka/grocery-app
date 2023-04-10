@@ -1,11 +1,19 @@
 import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { useEffect } from 'react';
 import { COLORS, GlobalStyles } from '../constants';
 import { Button, Input } from '../components/UI';
 import { SwipableList, Summary } from '../components/Cart';
 import { useCart } from '../hooks/useCart';
 
 export default function OrderSummaryScreen() {
-  const { cartItems, showOrderCheckoutHandler } = useCart();
+  const { cartItems, showOrderCheckoutHandler, isCartEmpty, showCartHandler } =
+    useCart();
+
+  useEffect(() => {
+    if (isCartEmpty) {
+      showCartHandler();
+    }
+  }, [isCartEmpty]);
 
   return (
     <SafeAreaView style={styles.root}>
