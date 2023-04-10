@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { EmptyList, IconButton } from '../../components/UI';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import { useCart } from '../../hooks/useCart';
-import CartList from '../../components/Cart/CartList';
+import { CartList } from '../../components/Cart';
 
 export default function CartScreen() {
   const { isCartEmpty } = useCart();

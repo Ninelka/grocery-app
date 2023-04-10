@@ -1,76 +1,15 @@
-import { Animated, FlatList, StyleSheet, Text, View } from 'react-native';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import { FloatingCard, ProductCard, TotalCard } from '../UI';
+import { StyleSheet, View } from 'react-native';
+import { FloatingCard, TotalCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
-import { useProducts } from '../../hooks/useProducts';
-import { COLORS, GlobalStyles } from '../../constants';
-import { Ionicons } from '@expo/vector-icons';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-const RemoveAction = (progress, dragX) => {
-  const scale = dragX.interpolate({
-    inputRange: [0, 96],
-    outputRange: [0, 1],
-  });
-
-  return (
-    <Animated.View style={{ transform: [{ translateX: scale }] }}>
-      <View style={styles.removeAction}>
-        <Ionicons
-          size={GlobalStyles.spacing.m}
-          color={COLORS.white}
-          name="trash-outline"
-        />
-        <Text style={styles.removeActionText}>Delete</Text>
-      </View>
-    </Animated.View>
-  );
-};
+import { GlobalStyles } from '../../constants';
+import SwipableList from './SwipableList';
 
 export default function CartList() {
-  const {
-    cartItems,
-    removeFromCartHandler,
-    totalCartAmount,
-    showOrderSummaryHandler,
-  } = useCart();
-  const { countAmountWithDiscount, currentProduct } = useProducts();
+  const { cartItems, totalCartAmount, showOrderSummaryHandler } = useCart();
 
   return (
     <View style={styles.root}>
-      <FlatList
-        keyExtractor={(item) => item.productId}
-        data={cartItems}
-        renderItem={({ item, index }) => (
-          <View
-            style={{
-              marginBottom:
-                index === cartItems.length - 1 ? 0 : GlobalStyles.spacing.s,
-            }}
-          >
-            <GestureHandlerRootView>
-              <Swipeable
-                renderRightActions={RemoveAction}
-                onSwipeableOpen={() => removeFromCartHandler(item)}
-              >
-                <ProductCard
-                  {...currentProduct(item?.productId)}
-                  amountWithDiscount={countAmountWithDiscount(
-                    currentProduct(item?.productId).amount,
-                    currentProduct(item?.productId).discount
-                  )}
-                  image={{
-                    uri: currentProduct(item?.productId).image as string,
-                  }}
-                  type="horizontal"
-                  withQuantity={true}
-                  initialQuantity={item?.count}
-                />
-              </Swipeable>
-            </GestureHandlerRootView>
-          </View>
-        )}
-      />
+      <SwipableList items={cartItems} />
       <FloatingCard style={styles.total}>
         <TotalCard
           counter={cartItems.length}
@@ -85,18 +24,6 @@ export default function CartList() {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-  },
-  removeAction: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: COLORS.red,
-    borderRadius: GlobalStyles.spacing.xs,
-    minWidth: 96,
-    minHeight: '100%',
-  },
-  removeActionText: {
-    color: COLORS.white,
-    marginTop: GlobalStyles.spacing.xs,
   },
   total: {
     marginTop: GlobalStyles.spacing.s,
