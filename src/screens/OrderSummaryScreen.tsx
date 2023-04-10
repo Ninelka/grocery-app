@@ -5,7 +5,7 @@ import { SwipableList, Summary } from '../components/Cart';
 import { useCart } from '../hooks/useCart';
 
 export default function OrderSummaryScreen() {
-  const { cartItems } = useCart();
+  const { cartItems, showOrderCheckoutHandler } = useCart();
 
   return (
     <SafeAreaView style={styles.root}>
@@ -22,7 +22,11 @@ export default function OrderSummaryScreen() {
       </View>
       <View style={styles.actionsRow}>
         <View style={styles.checkoutBtn}>
-          <Button size="large" shape="rounded">
+          <Button
+            size="large"
+            shape="rounded"
+            onPress={showOrderCheckoutHandler}
+          >
             Checkout
           </Button>
         </View>

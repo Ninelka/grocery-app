@@ -6,6 +6,7 @@ export type StackParamList = {
     productData: undefined;
   };
   OrderSummary: undefined;
+  Checkout: undefined;
   Cart: undefined;
   FilteredProducts: {
     filter: undefined;

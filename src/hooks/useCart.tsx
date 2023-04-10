@@ -31,6 +31,10 @@ export const useCart = () => {
     navigation.navigate('OrderSummary');
   };
 
+  const showOrderCheckoutHandler = () => {
+    navigation.navigate('Checkout');
+  };
+
   const showCartHandler = () => {
     navigation.navigate('Cart');
   };
@@ -64,5 +68,6 @@ export const useCart = () => {
     summaryText,
     showOrderSummaryHandler,
     showCartHandler,
+    showOrderCheckoutHandler,
   };
 };
