@@ -17,11 +17,11 @@ const CategoriesHomeBlock = ({ onSeeAll }: ICategoriesHomeBlock) => {
   return (
     <SmallViewBox title="Categories" onSeeAll={onSeeAll}>
       {isCategoriesLoading && <Text>Loading...</Text>}
-      {!categories && !isCategoriesLoading && <Text>No any categories</Text>}
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         contentContainerStyle={styles.list}
         data={categories?.slice(0, 4)}
+        ListEmptyComponent={<Text>No any categories</Text>}
         renderItem={({ item, index }) => (
           <View>
             <CategoryItem

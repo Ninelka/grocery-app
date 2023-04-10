@@ -9,10 +9,10 @@ const SpecialDealsHomeBlock = ({ onSeeAll }) => {
   return (
     <SmallViewBox title="Special Deals for You" onSeeAll={onSeeAll}>
       {isDealsLoading && <Text>Loading...</Text>}
-      {!deals && !isDealsLoading && <Text>No any deals</Text>}
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={deals}
+        ListEmptyComponent={<Text>No any deals</Text>}
         renderItem={({ item, index }) => (
           <View
             style={[

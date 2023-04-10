@@ -28,11 +28,11 @@ function FeaturedVegetablesScreen() {
   return (
     <View style={styles.root}>
       {isProductsLoading && <Text>Loading...</Text>}
-      {!products && !isProductsLoading && <Text>No any deals</Text>}
       <FlatList
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
         data={products}
+        ListEmptyComponent={<Text>No any deals</Text>}
         renderItem={({ item, index }) => (
           <View
             key={index.toString()}

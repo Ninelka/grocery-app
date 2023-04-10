@@ -46,13 +46,11 @@ export default function FilteredProductsScreen({ route, navigation }) {
 
   return (
     <View style={styles.root}>
-      {!filteredProductsList.length && (
-        <Text>No any products in this category</Text>
-      )}
       <FlatList
         numColumns={2}
         keyExtractor={(item, index) => index.toString()}
         data={filteredProductsList}
+        ListEmptyComponent={<Text>No any products in this category</Text>}
         renderItem={({ item, index }) => (
           <View
             key={index.toString()}
