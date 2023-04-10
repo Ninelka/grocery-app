@@ -10,7 +10,7 @@
 
 mochup: [link](https://www.figma.com/file/hVzuCzifg4BREiY9bkP99u/Grocery-E-commerce-UI-Kit-(Community)-(Copy)?node-id=1%3A362&t=2ObAjkxj3iZinHYT-1)<br/>
 
-Technology:
+## Technology:
 
 -   React, React Hooks
 -   React Native (Expo)
@@ -18,3 +18,14 @@ Technology:
 -   Firebase (auth, realtime-database)
 -   Redux-Toolkit
 -   Async Storage
+
+## Features:
+
+- Sign Up/Login/Log out
+- Onboarding slider
+- Filter products by category
+- Add/Delete Products to/from Favorite
+- Add/Delete Products to/from Cart
+- Increasing/Decreasing a number of products in cart
+- Show cart total price
+- Checkout payment
