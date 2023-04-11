@@ -1,4 +1,4 @@
-import { StatusBar, Text } from 'react-native';
+import { StatusBar } from 'react-native';
 import AuthContextProvider from './src/store/context/auth-context';
 import { Navigation } from './src/components/Navigation';
 import { QueryClient, QueryClientProvider } from 'react-query';
