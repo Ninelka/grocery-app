@@ -2,8 +2,11 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Summary } from '../components/Cart';
 import { Button } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
+import { useCart } from '../hooks/useCart';
 
 const CheckoutScreen = () => {
+  const { paymentSuccessHandler } = useCart();
+
   return (
     <SafeAreaView style={styles.root}>
       <View style={styles.container}>
@@ -15,7 +18,7 @@ const CheckoutScreen = () => {
       </View>
       <View style={styles.actionsRow}>
         <View style={styles.checkoutBtn}>
-          <Button size="large" shape="rounded">
+          <Button size="large" shape="rounded" onPress={paymentSuccessHandler}>
             Pay Now
           </Button>
         </View>

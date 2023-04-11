@@ -13,3 +13,4 @@ export { default as CheckoutScreen } from './CheckoutScreen';
 export { default as FilteredProductsScreen } from './FilteredProductsScreen';
 export { default as AllReviewScreen } from './AllReviewScreen';
 export { default as IntroSliderScreen } from './IntroSliderScreen';
+export { default as PaymentSuccessScreen } from './PaymentSuccessScreen';

@@ -9,6 +9,7 @@ import {
   FilteredProductsScreen,
   IntroSliderScreen,
   OrderSummaryScreen,
+  PaymentSuccessScreen,
   ProductDetailsScreen,
   SpecialDealsScreen,
 } from '../../screens';
@@ -85,6 +86,13 @@ function AuthorizedStack() {
             component={AllReviewScreen}
             options={{
               title: 'All Reviews',
+            }}
+          />
+          <Stack.Screen
+            name="PaymentSuccess"
+            component={PaymentSuccessScreen}
+            options={{
+              headerShown: false,
             }}
           />
         </>

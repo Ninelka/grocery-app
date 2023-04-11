@@ -39,6 +39,10 @@ export const useCart = () => {
     navigation.navigate('Cart');
   };
 
+  const paymentSuccessHandler = () => {
+    navigation.navigate('PaymentSuccess');
+  };
+
   const totalCartAmount = useMemo(() => {
     return cartItems.reduce(
       (total, item) =>
@@ -69,5 +73,6 @@ export const useCart = () => {
     showOrderSummaryHandler,
     showCartHandler,
     showOrderCheckoutHandler,
+    paymentSuccessHandler,
   };
 };
