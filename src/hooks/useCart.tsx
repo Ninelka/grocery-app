@@ -54,8 +54,8 @@ export const useCart = () => {
         total +
         item.count *
           countAmountWithDiscount(
-            currentProduct(item?.productId).amount,
-            currentProduct(item?.productId).discount
+            currentProduct(item?.productId)?.amount,
+            currentProduct(item?.productId)?.discount
           ),
       0
     );
@@ -63,7 +63,7 @@ export const useCart = () => {
 
   const summaryText = useMemo(() => {
     const cartItemsTitles = cartItems.map(
-      (item) => currentProduct(item.productId).title
+      (item) => currentProduct(item.productId)?.title
     );
     return cartItemsTitles.join(', ');
   }, [cartItems]);
