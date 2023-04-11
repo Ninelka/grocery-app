@@ -1,5 +1,6 @@
 import {
   addToCart,
+  removeAllFromCart,
   removeFromCart,
   useAppDispatch,
   useAppSelector,
@@ -25,6 +26,10 @@ export const useCart = () => {
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+  };
+
+  const clearCartHandler = () => {
+    dispatch(removeAllFromCart());
   };
 
   const showOrderSummaryHandler = () => {
@@ -68,6 +73,7 @@ export const useCart = () => {
     isCartEmpty,
     addToCartHandler,
     removeFromCartHandler,
+    clearCartHandler,
     totalCartAmount,
     summaryText,
     showOrderSummaryHandler,
