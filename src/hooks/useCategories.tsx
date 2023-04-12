@@ -1,16 +1,12 @@
 import { useQuery } from 'react-query';
 import { COLORS } from '../constants';
 import { getCategories } from '../../firebase';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigation } from '../types/stack-navigation';
 
 export const useCategories = () => {
   const { data: categories, isLoading: isCategoriesLoading } = useQuery(
     'categories',
     getCategories
   );
-
-  const navigation = useNavigation<StackNavigation>();
 
   const getCategoryColors = (count = 0) => {
     const listOfColors = [
@@ -30,16 +26,9 @@ export const useCategories = () => {
     return color;
   };
 
-  const showFilteredProductsHandler = (category) => {
-    navigation.navigate('FilteredProducts', {
-      filter: category,
-    });
-  };
-
   return {
     categories,
     isCategoriesLoading,
     getCategoryColors,
-    showFilteredProductsHandler,
   };
 };

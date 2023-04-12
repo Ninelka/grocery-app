@@ -1,11 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 import { FloatingCard, TotalCard } from '../UI';
 import { useCart } from '../../hooks/useCart';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
 import { GlobalStyles } from '../../constants';
 import SwipableList from './SwipableList';
 
 export default function CartList() {
-  const { cartItems, totalCartAmount, showOrderSummaryHandler } = useCart();
+  const { cartItems, totalCartAmount } = useCart();
+  const { showOrderSummaryHandler } = useAppNavigation();
 
   return (
     <View style={styles.root}>

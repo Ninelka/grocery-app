@@ -1,5 +1,6 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { useCategories } from '../../hooks/useCategories';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
 import { CategoryItem, SmallViewBox } from '../UI';
 
 interface ICategoriesHomeBlock {
@@ -7,12 +8,9 @@ interface ICategoriesHomeBlock {
 }
 
 const CategoriesHomeBlock = ({ onSeeAll }: ICategoriesHomeBlock) => {
-  const {
-    categories,
-    isCategoriesLoading,
-    getCategoryColors,
-    showFilteredProductsHandler,
-  } = useCategories();
+  const { categories, isCategoriesLoading, getCategoryColors } =
+    useCategories();
+  const { showFilteredProductsHandler } = useAppNavigation();
 
   return (
     <SmallViewBox title="Categories" onSeeAll={onSeeAll}>

@@ -2,10 +2,10 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Summary } from '../components/Cart';
 import { Button } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
-import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const CheckoutScreen = () => {
-  const { paymentSuccessHandler } = useCart();
+  const { paymentSuccessHandler } = useAppNavigation();
 
   return (
     <SafeAreaView style={styles.root}>

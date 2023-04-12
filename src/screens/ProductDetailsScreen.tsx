@@ -15,6 +15,7 @@ import {
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 export default function ProductDetailsScreen({ route, navigation }) {
   const { addToCartHandler } = useCart();
@@ -22,6 +23,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
   const { title, image, description, reviews }: IProductCard = productData;
 
   const [productQuantity, setProductQuantity] = useState(1);
+  const { showCartHandler } = useAppNavigation();
 
   const changeProductQuantity = (props) => {
     setProductQuantity(props);
@@ -29,7 +31,7 @@ export default function ProductDetailsScreen({ route, navigation }) {
 
   const buyNowBtnHandler = (counter: number) => {
     addToCartHandler(productData.id, counter);
-    navigation.navigate('Cart');
+    showCartHandler();
   };
 
   useLayoutEffect(() => {

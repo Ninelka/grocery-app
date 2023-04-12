@@ -7,14 +7,11 @@ import {
 } from '../store/redux';
 import { useMemo } from 'react';
 import { useProducts } from './useProducts';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigation } from '../types/stack-navigation';
 
 export const useCart = () => {
   const { items: cartItems } = useAppSelector((store) => store.cart);
   const dispatch = useAppDispatch();
   const { currentProduct, countAmountWithDiscount } = useProducts();
-  const navigation = useNavigation<StackNavigation>();
 
   const isCartEmpty = useMemo(() => {
     return cartItems.length <= 0;
@@ -30,22 +27,6 @@ export const useCart = () => {
 
   const clearCartHandler = () => {
     dispatch(removeAllFromCart());
-  };
-
-  const showOrderSummaryHandler = () => {
-    navigation.navigate('OrderSummary');
-  };
-
-  const showOrderCheckoutHandler = () => {
-    navigation.navigate('Checkout');
-  };
-
-  const showCartHandler = () => {
-    navigation.navigate('Cart');
-  };
-
-  const paymentSuccessHandler = () => {
-    navigation.navigate('PaymentSuccess');
   };
 
   const totalCartAmount = useMemo(() => {
@@ -76,9 +57,5 @@ export const useCart = () => {
     clearCartHandler,
     totalCartAmount,
     summaryText,
-    showOrderSummaryHandler,
-    showCartHandler,
-    showOrderCheckoutHandler,
-    paymentSuccessHandler,
   };
 };

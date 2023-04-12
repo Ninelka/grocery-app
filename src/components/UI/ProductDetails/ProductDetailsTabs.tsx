@@ -4,21 +4,14 @@ import { useState } from 'react';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import ReviewCard from '../Card/ReviewCard';
 import Button from '../Button';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigation } from '../../../types/stack-navigation';
+import { useAppNavigation } from '../../../hooks/useAppNavigation';
 
 const segmentsData = ['Detail Items', 'Reviews'];
 
 export default function ProductDetailsTabs({ ...props }) {
   const [activeSegmentIndex, setActiveSegmentIndex] = useState(0);
-  const navigation = useNavigation<StackNavigation>();
+  const { openAllReviewsHandler } = useAppNavigation();
   const { reviews } = props;
-
-  const openAllReviewsHandler = () => {
-    navigation.navigate('AllReviews', {
-      reviews,
-    });
-  };
 
   return (
     <View style={styles.root}>
@@ -50,7 +43,7 @@ export default function ProductDetailsTabs({ ...props }) {
               size="large"
               type="secondary"
               shape="rounded"
-              onPress={openAllReviewsHandler}
+              onPress={() => openAllReviewsHandler(reviews)}
             >
               See All Reviews
             </Button>

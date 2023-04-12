@@ -1,8 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import Button from './Button';
-import { useNavigation } from '@react-navigation/native';
-import { BottomTabNavigation } from '../../types/bottom-tabs-navigation';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
 
 const image = require('../../../assets/images/cart.png');
 
@@ -12,11 +11,7 @@ interface IEmptyList {
 }
 
 export default function EmptyList({ title, description }: IEmptyList) {
-  const navigation = useNavigation<BottomTabNavigation>();
-
-  const backToMainHandler = () => {
-    navigation.jumpTo('Home');
-  };
+  const { showHomePageHandler } = useAppNavigation();
 
   return (
     <View style={styles.root}>
@@ -25,7 +20,7 @@ export default function EmptyList({ title, description }: IEmptyList) {
         <Text style={styles.contentTitle}>{title}</Text>
         <Text style={styles.contentText}>{description}</Text>
       </View>
-      <Button size="large" shape="rounded" onPress={backToMainHandler}>
+      <Button size="large" shape="rounded" onPress={showHomePageHandler}>
         Start Shopping
       </Button>
     </View>

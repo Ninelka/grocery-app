@@ -1,11 +1,12 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
 import { useCategories } from '../hooks/useCategories';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 import { CategoryItem } from '../components/UI';
 import { COLORS } from '../constants';
 
 function CategoriesScreen() {
-  const { categories, getCategoryColors, showFilteredProductsHandler } =
-    useCategories();
+  const { categories, getCategoryColors } = useCategories();
+  const { showFilteredProductsHandler } = useAppNavigation();
 
   return (
     <SafeAreaView style={styles.root}>

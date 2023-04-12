@@ -1,19 +1,14 @@
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { StackNavigation } from '../../types/stack-navigation';
 import { COLORS, GlobalStyles } from '../../constants';
-import { useNavigation } from '@react-navigation/native';
 import {
   CategoriesHomeBlock,
   FeaturedVegetablesHomeScreen,
   SpecialDealsHomeBlock,
 } from '../../components/HomeBlocks';
+import { useAppNavigation } from '../../hooks/useAppNavigation';
 
 export default function HomeScreen() {
-  const navigation = useNavigation<StackNavigation>();
-
-  const seeAllHandler = (path) => {
-    navigation.navigate(path);
-  };
+  const { seeAllHandler } = useAppNavigation();
 
   return (
     <SafeAreaView style={styles.root}>

@@ -8,21 +8,14 @@ import {
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 function FeaturedVegetablesScreen() {
-  const {
-    products,
-    isProductsLoading,
-    countAmountWithDiscount,
-    showProductDetailsHandler,
-  } = useProducts();
-  const {
-    addToCartHandler,
-    cartItems,
-    totalCartAmount,
-    summaryText,
-    showCartHandler,
-  } = useCart();
+  const { products, isProductsLoading, countAmountWithDiscount } =
+    useProducts();
+  const { addToCartHandler, cartItems, totalCartAmount, summaryText } =
+    useCart();
+  const { showCartHandler, showProductDetailsHandler } = useAppNavigation();
 
   // TODO: show only featured products on this screen
   return (

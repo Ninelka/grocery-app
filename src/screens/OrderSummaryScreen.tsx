@@ -4,10 +4,11 @@ import { COLORS, GlobalStyles } from '../constants';
 import { Button, Input } from '../components/UI';
 import { SwipableList, Summary } from '../components/Cart';
 import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 export default function OrderSummaryScreen() {
-  const { cartItems, showOrderCheckoutHandler, isCartEmpty, showCartHandler } =
-    useCart();
+  const { cartItems, isCartEmpty } = useCart();
+  const { showOrderCheckoutHandler, showCartHandler } = useAppNavigation();
 
   useEffect(() => {
     if (isCartEmpty) {

@@ -10,21 +10,14 @@ import {
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 export default function FilteredProductsScreen({ route, navigation }) {
   const filter = route.params?.filter;
-  const {
-    filteredProducts,
-    countAmountWithDiscount,
-    showProductDetailsHandler,
-  } = useProducts();
-  const {
-    addToCartHandler,
-    cartItems,
-    totalCartAmount,
-    summaryText,
-    showCartHandler,
-  } = useCart();
+  const { filteredProducts, countAmountWithDiscount } = useProducts();
+  const { addToCartHandler, cartItems, totalCartAmount, summaryText } =
+    useCart();
+  const { showCartHandler, showProductDetailsHandler } = useAppNavigation();
 
   const filteredProductsList = useMemo(() => {
     return filteredProducts(filter);

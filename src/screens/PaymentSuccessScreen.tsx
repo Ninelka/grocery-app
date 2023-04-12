@@ -1,17 +1,16 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from '../components/UI';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../constants';
-import { useNavigation } from '@react-navigation/native';
-import { BottomTabNavigation } from '../types/bottom-tabs-navigation';
 import { useCart } from '../hooks/useCart';
+import { useAppNavigation } from '../hooks/useAppNavigation';
 
 const PaymentSuccessScreen = () => {
-  const navigation = useNavigation<BottomTabNavigation>();
   const { clearCartHandler } = useCart();
+  const { showHomePageHandler } = useAppNavigation();
 
   const backToMainHandler = () => {
     clearCartHandler();
-    navigation.navigate('Home');
+    showHomePageHandler();
   };
 
   return (
