@@ -6,8 +6,7 @@ import { COLORS, GlobalStyles } from '../../constants';
 import { Ionicons } from '@expo/vector-icons';
 import { CartItem } from '../../store/redux';
 import { ProductCard } from '../UI';
-import { useProducts } from '../../hooks/useProducts';
-import { useCart } from '../../hooks/useCart';
+import { useProducts, useCart } from '../../hooks';
 
 const RemoveAction = (progress, dragX) => {
   const scale = dragX.interpolate({

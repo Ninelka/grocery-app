@@ -2,8 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, ProductCard } from '../UI';
 import { GlobalStyles } from '../../constants';
 import { removeFavorite, useAppDispatch } from '../../store/redux';
-import { useProducts } from '../../hooks/useProducts';
-import { useCart } from '../../hooks/useCart';
+import { useProducts, useCart } from '../../hooks';
 
 function FavoriteItem({ item }) {
   const { countAmountWithDiscount } = useProducts();

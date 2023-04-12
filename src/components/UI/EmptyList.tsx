@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import Button from './Button';
-import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { useAppNavigation } from '../../hooks';
 
 const image = require('../../../assets/images/cart.png');
 

@@ -1,7 +1,7 @@
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import { EmptyList, IconButton } from '../../components/UI';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../hooks';
 import { FavoriteList } from '../../components/Favorite';
 
 export default function FavoriteScreen() {

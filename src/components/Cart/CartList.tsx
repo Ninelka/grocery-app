@@ -1,7 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { FloatingCard, TotalCard } from '../UI';
-import { useCart } from '../../hooks/useCart';
-import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { useCart, useAppNavigation } from '../../hooks';
 import { GlobalStyles } from '../../constants';
 import SwipableList from './SwipableList';
 

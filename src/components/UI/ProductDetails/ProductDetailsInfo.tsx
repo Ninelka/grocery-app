@@ -5,7 +5,7 @@ import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import { useEffect, useMemo, useState } from 'react';
 import QuantityButtons from '../QuantityButtons';
-import { useFavorites } from '../../../hooks/useFavorites';
+import { useFavorites } from '../../../hooks';
 
 interface IProductDetailsInfo extends IProductCard {
   onChangeProductQuantity?: (quantity: number) => void;

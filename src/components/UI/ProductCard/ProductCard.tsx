@@ -12,7 +12,7 @@ import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import Badge from '../Badge/Badge';
 import IconButton from '../IconButton';
 import QuantityButtons from '../QuantityButtons';
-import { useCart } from '../../../hooks/useCart';
+import { useCart } from '../../../hooks';
 import { IReview } from '../Card/ReviewCard';
 
 export interface IProductCard {

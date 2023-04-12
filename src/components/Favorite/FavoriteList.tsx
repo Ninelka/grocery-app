@@ -1,7 +1,6 @@
 import { FlatList } from 'react-native';
 import FavoriteItem from './FavoriteItem';
-import { useFavorites } from '../../hooks/useFavorites';
-import { useProducts } from '../../hooks/useProducts';
+import { useFavorites, useProducts } from '../../hooks';
 import { useMemo } from 'react';
 
 function FavoriteList() {

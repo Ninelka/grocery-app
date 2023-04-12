@@ -1,8 +1,7 @@
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Button } from '../components/UI';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../constants';
-import { useCart } from '../hooks/useCart';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { useCart, useAppNavigation } from '../hooks';
 
 const PaymentSuccessScreen = () => {
   const { clearCartHandler } = useCart();

@@ -5,7 +5,7 @@ import {
   FeaturedVegetablesHomeScreen,
   SpecialDealsHomeBlock,
 } from '../../components/HomeBlocks';
-import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { useAppNavigation } from '../../hooks';
 
 export default function HomeScreen() {
   const { seeAllHandler } = useAppNavigation();

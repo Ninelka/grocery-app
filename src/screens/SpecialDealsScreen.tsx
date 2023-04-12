@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useDeals } from '../hooks/useDeals';
+import { useDeals } from '../hooks';
 import { Card } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
 

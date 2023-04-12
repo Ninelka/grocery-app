@@ -1,6 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 import { useState } from 'react';
-import { useTogglePasswordVisibility } from '../../hooks/useTogglePasswordVisibility';
+import { useTogglePasswordVisibility } from '../../hooks';
 import { GlobalStyles } from '../../constants';
 import { ICredentialsInvalid } from './AuthContent';
 import { Button, Input, Link } from '../UI';

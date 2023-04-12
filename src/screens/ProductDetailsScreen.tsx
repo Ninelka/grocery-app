@@ -14,8 +14,7 @@ import {
   ProductDetailsTabs,
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
-import { useCart } from '../hooks/useCart';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { useCart, useAppNavigation } from '../hooks';
 
 export default function ProductDetailsScreen({ route, navigation }) {
   const { addToCartHandler } = useCart();

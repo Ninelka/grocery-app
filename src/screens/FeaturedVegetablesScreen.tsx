@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useProducts } from '../hooks/useProducts';
+import { useProducts, useCart, useAppNavigation } from '../hooks';
 import {
   FilterBtn,
   FloatingCard,
@@ -7,8 +7,6 @@ import {
   TotalCard,
 } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
-import { useCart } from '../hooks/useCart';
-import { useAppNavigation } from '../hooks/useAppNavigation';
 
 function FeaturedVegetablesScreen() {
   const { products, isProductsLoading, countAmountWithDiscount } =

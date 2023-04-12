@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../constants';
 import { useMemo } from 'react';
-import { useCart } from '../../hooks/useCart';
+import { useCart } from '../../hooks';
 
 const Summary = () => {
   const { totalCartAmount } = useCart();

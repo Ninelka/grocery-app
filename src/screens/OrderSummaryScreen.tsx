@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { COLORS, GlobalStyles } from '../constants';
 import { Button, Input } from '../components/UI';
 import { SwipableList, Summary } from '../components/Cart';
-import { useCart } from '../hooks/useCart';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { useCart, useAppNavigation } from '../hooks';
 
 export default function OrderSummaryScreen() {
   const { cartItems, isCartEmpty } = useCart();

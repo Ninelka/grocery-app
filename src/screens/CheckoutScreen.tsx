@@ -2,7 +2,7 @@ import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Summary } from '../components/Cart';
 import { Button } from '../components/UI';
 import { COLORS, GlobalStyles } from '../constants';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { useAppNavigation } from '../hooks';
 
 const CheckoutScreen = () => {
   const { paymentSuccessHandler } = useAppNavigation();

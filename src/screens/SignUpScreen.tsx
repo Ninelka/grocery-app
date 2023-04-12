@@ -1,6 +1,6 @@
 import { Text, View } from 'react-native';
 import AuthContent from '../components/Auth/AuthContent';
-import { useAuth } from '../hooks/useAuth';
+import { useAuth } from '../hooks';
 
 function SignUpScreen() {
   const { isAuthenticating, signupHandler } = useAuth();

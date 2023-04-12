@@ -1,7 +1,7 @@
 import IconButton from './IconButton';
 import { StyleSheet, View } from 'react-native';
 import Input from './Input';
-import { useQuantity } from '../../hooks/useQuantity';
+import { useQuantity } from '../../hooks';
 import { COLORS, GlobalStyles } from '../../constants';
 import { useEffect } from 'react';
 

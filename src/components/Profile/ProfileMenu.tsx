@@ -1,7 +1,7 @@
 import { ScrollView, StyleSheet } from 'react-native';
 import ProfileMenuItem from './ProfileMenuItem';
 import { COLORS, GlobalStyles } from '../../constants';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks';
 
 const ProfileMenu = () => {
   const { logoutHandler } = useAuth();

@@ -1,6 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useCategories } from '../../hooks/useCategories';
-import { useAppNavigation } from '../../hooks/useAppNavigation';
+import { useCategories, useAppNavigation } from '../../hooks';
 import { CategoryItem, SmallViewBox } from '../UI';
 
 interface ICategoriesHomeBlock {

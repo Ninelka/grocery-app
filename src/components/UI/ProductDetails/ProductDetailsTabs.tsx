@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { COLORS, FONT_FAMILY, GlobalStyles } from '../../../constants';
 import ReviewCard from '../Card/ReviewCard';
 import Button from '../Button';
-import { useAppNavigation } from '../../../hooks/useAppNavigation';
+import { useAppNavigation } from '../../../hooks';
 
 const segmentsData = ['Detail Items', 'Reviews'];
 

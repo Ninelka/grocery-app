@@ -1,6 +1,5 @@
 import { FlatList, SafeAreaView, StyleSheet, View } from 'react-native';
-import { useCategories } from '../hooks/useCategories';
-import { useAppNavigation } from '../hooks/useAppNavigation';
+import { useCategories, useAppNavigation } from '../hooks';
 import { CategoryItem } from '../components/UI';
 import { COLORS } from '../constants';
 
