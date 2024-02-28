@@ -8,7 +8,7 @@
 ![Firebase](https://img.shields.io/badge/-Firebase-05122A?style=flat&logo=firebase)&nbsp;
 ![Async Storage](https://img.shields.io/badge/async%20storage-1.17.11-green)&nbsp;
 
-mochup: [link](https://www.figma.com/file/hVzuCzifg4BREiY9bkP99u/Grocery-E-commerce-UI-Kit-(Community)-(Copy)?node-id=1%3A362&t=2ObAjkxj3iZinHYT-1)<br/>
+mockup: [link](https://www.figma.com/file/hVzuCzifg4BREiY9bkP99u/Grocery-E-commerce-UI-Kit-(Community)-(Copy)?node-id=1%3A362&t=2ObAjkxj3iZinHYT-1)<br/>
 
 ## Technology:
 
